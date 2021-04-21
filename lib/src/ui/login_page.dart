@@ -1,18 +1,121 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: Stack(
       children: <Widget>[
-        _createBackground(context),
+        _createBackground(context, screenSize),
+        _loginForm(context, screenSize),
       ],
     ));
   }
 
-  Widget _createBackground(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+  Widget _loginForm(BuildContext context, final screenSize) {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SafeArea(
+              child: Container(
+            height: 180.0,
+          )),
+          Container(
+            width: screenSize.width * 0.85,
+            margin: EdgeInsets.symmetric(vertical: 40.0),
+            padding: EdgeInsets.symmetric(vertical: 50.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5.0),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 3.0,
+                  offset: Offset(0.0, 5.0),
+                  spreadRadius: 3.0,
+                ),
+              ],
+            ),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "Ingreso",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                SizedBox(height: 60.0),
+                _createEmail(),
+                SizedBox(height: 30.0),
+                _createPassword(),
+                SizedBox(height: 30.0),
+                _createBotonLogin(),
+              ],
+            ),
+          ),
+          Text('¿Olvidó la contraseña?'),
+          SizedBox(height: 100.0,)
+        ],
+      ),
+    );
+  }
+
+  Widget _createEmail() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: TextField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          icon: Icon(
+            Icons.alternate_email,
+            color: Colors.indigo,
+          ),
+          labelText: 'Correo electrónico',
+          hintText: 'ejemplo@correo.com',
+        ),
+      ),
+    );
+  }
+
+  Widget _createPassword() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: TextField(
+        obscureText: true,
+        decoration: InputDecoration(
+          icon: Icon(
+            Icons.lock_outline,
+            color: Colors.indigo,
+          ),
+          labelText: 'Contraseña',
+        ),
+      ),
+    );
+  }
+
+  Widget _createBotonLogin() {
+    return ElevatedButton(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+        child: Text('Ingresar'),
+      ),
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        )),
+        backgroundColor: MaterialStateProperty.all(Colors.indigo),
+        elevation: MaterialStateProperty.all(0.0),
+      ),
+      onPressed: () {},
+    );
+  }
+
+  Widget _createBackground(BuildContext context, final screenSize) {
     final blueBackground = Container(
       height: screenSize.height * 0.4,
       width: double.infinity,
@@ -35,16 +138,16 @@ class LoginPage extends StatelessWidget {
 
     final logoImage = Container(
       child: Container(
-        height: 200.0,
-        width: 200.0,
+        height: 170.0,
+        width: 170.0,
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                image: AssetImage('assets/img/medium_logo.png'),
-               ),
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage('assets/img/medium_logo.png'),
+          ),
         ),
-        ),
-      );
+      ),
+    );
     return Stack(
       children: <Widget>[
         blueBackground,
@@ -55,11 +158,14 @@ class LoginPage extends StatelessWidget {
         Positioned(bottom: 120.0, right: 20.0, child: circle),
         Positioned(bottom: -50.0, left: -20.0, child: circle),
         Container(
-          padding: EdgeInsets.only(top: 10.0),
+          padding: EdgeInsets.only(top: 20.0),
           child: Column(
             children: <Widget>[
               logoImage,
-              SizedBox(height: 10.0, width: double.infinity,),
+              SizedBox(
+                height: 5.0,
+                width: double.infinity,
+              ),
               Text(
                 'BrigadaApp',
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
