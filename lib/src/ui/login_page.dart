@@ -1,5 +1,10 @@
+
+import 'package:brigadapoli/bloc/login_bloc.dart';
+import 'package:brigadapoli/bloc/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
 
 class LoginPage extends StatelessWidget {
   @override
@@ -15,6 +20,8 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _loginForm(BuildContext context, final screenSize) {
+    final bloc = Provider.of(context);
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -45,56 +52,71 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(height: 60.0),
-                _createEmail(),
+                _createEmail(bloc),
                 SizedBox(height: 30.0),
-                _createPassword(),
+                _createPassword(bloc),
                 SizedBox(height: 30.0),
                 _createBotonLogin(),
               ],
             ),
           ),
           Text('¿Olvidó la contraseña?'),
-          SizedBox(height: 100.0,)
+          SizedBox(
+            height: 100.0,
+          )
         ],
       ),
     );
   }
 
-  Widget _createEmail() {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20.0,
-      ),
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          icon: Icon(
-            Icons.alternate_email,
-            color: Colors.indigo,
-          ),
-          labelText: 'Correo electrónico',
-          hintText: 'ejemplo@correo.com',
-        ),
-      ),
-    );
+  Widget _createEmail(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.alternate_email,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Correo electrónico',
+                hintText: 'ejemplo@correo.com',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => bloc.changedEmail(value),
+            ),
+          );
+        });
   }
 
-  Widget _createPassword() {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20.0,
-      ),
-      child: TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-          icon: Icon(
-            Icons.lock_outline,
-            color: Colors.indigo,
-          ),
-          labelText: 'Contraseña',
-        ),
-      ),
-    );
+  Widget _createPassword(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.passwordStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.lock_outline,
+                    color: Colors.indigo,
+                  ),
+                  labelText: 'Contraseña',
+                  counterText: snapshot.data,
+                  errorText: snapshot.error),
+              onChanged: (value) => bloc.changedPassword(value),
+            ),
+          );
+        });
   }
 
   Widget _createBotonLogin() {
@@ -108,7 +130,8 @@ class LoginPage extends StatelessWidget {
             RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
         )),
-        backgroundColor: MaterialStateProperty.all(Colors.indigo),
+        backgroundColor:
+            MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
         elevation: MaterialStateProperty.all(0.0),
       ),
       onPressed: () {},

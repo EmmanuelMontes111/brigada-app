@@ -1,7 +1,9 @@
-import 'package:brigadapoli/src/ui/bloc/provider.dart';
+
 import 'package:brigadapoli/src/ui/home_page.dart';
 import 'package:brigadapoli/src/ui/login_page.dart';
 import 'package:flutter/material.dart';
+
+import 'bloc/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,6 +19,9 @@ class MyApp extends StatelessWidget {
           'login': (BuildContext context) => LoginPage(),
           'home': (BuildContext context) => HomePage(),
         },
+          theme: ThemeData(
+            primaryColor:  Color.fromRGBO(4, 75, 172, 1.0),
+          ),
       ),
     );
   }
