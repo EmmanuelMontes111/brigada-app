@@ -1,9 +1,10 @@
 
+import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/ui/home_page.dart';
 import 'package:brigadapoli/src/ui/login_page.dart';
 import 'package:flutter/material.dart';
 
-import 'bloc/provider.dart';
+
 
 void main() => runApp(MyApp());
 

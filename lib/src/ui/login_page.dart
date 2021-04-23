@@ -1,10 +1,7 @@
-
-import 'package:brigadapoli/bloc/login_bloc.dart';
-import 'package:brigadapoli/bloc/provider.dart';
+import 'package:brigadapoli/src/bloc/login_bloc.dart';
+import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
 
 class LoginPage extends StatelessWidget {
   @override
@@ -56,7 +53,7 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 30.0),
                 _createPassword(bloc),
                 SizedBox(height: 30.0),
-                _createBotonLogin(),
+                _createBotonLogin(bloc),
               ],
             ),
           ),
@@ -119,23 +116,30 @@ class LoginPage extends StatelessWidget {
         });
   }
 
-  Widget _createBotonLogin() {
-    return ElevatedButton(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-        child: Text('Ingresar'),
-      ),
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
-        )),
-        backgroundColor:
-            MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
-        elevation: MaterialStateProperty.all(0.0),
-      ),
-      onPressed: () {},
-    );
+  Widget _createBotonLogin(LoginBloc bloc) {
+    //formValidStream
+
+    return StreamBuilder(
+        stream: bloc.formValidStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return ElevatedButton(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+              child: Text('Ingresar'),
+            ),
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              )),
+              backgroundColor: snapshot.hasData
+                  ? MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0))
+                  : MaterialStateProperty.all(Colors.black12),
+              elevation: MaterialStateProperty.all(0.0),
+            ),
+            onPressed: snapshot.hasData ? () {} : null,
+          );
+        });
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
