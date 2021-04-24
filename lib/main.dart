@@ -1,6 +1,7 @@
 
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/ui/home_page.dart';
+import 'package:brigadapoli/src/ui/list_brigadistas_page.dart';
 import 'package:brigadapoli/src/ui/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'login',
+        initialRoute: 'list',
         routes: {
           'login': (BuildContext context) => LoginPage(),
           'home': (BuildContext context) => HomePage(),
+          'list': (BuildContext context) => ListBrigasdistasPage(),
         },
           theme: ThemeData(
             primaryColor:  Color.fromRGBO(4, 75, 172, 1.0),
