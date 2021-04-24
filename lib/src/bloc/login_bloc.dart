@@ -22,6 +22,10 @@ class LoginBloc with Validators{
   Function(String) get changedPassword => _passwordCrontroller.sink.add;
 
 
+  // Obtener el último valor ingresado a los streams
+  String get email => _emailCrontroller.value;
+  String get password => _passwordCrontroller.value;
+
   dispose(){
     _emailCrontroller?.close();
     _passwordCrontroller?.close();

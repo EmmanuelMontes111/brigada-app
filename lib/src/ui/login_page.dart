@@ -137,9 +137,13 @@ class LoginPage extends StatelessWidget {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () {} : null,
+            onPressed: snapshot.hasData ? () => _goToHomePage(bloc, context) : null,
           );
         });
+  }
+
+  _goToHomePage(LoginBloc bloc, BuildContext context) {
+    Navigator.pushReplacementNamed(context, 'home');
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
