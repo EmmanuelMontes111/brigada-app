@@ -1,5 +1,4 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
-import 'package:brigadapoli/src/bloc/validators.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

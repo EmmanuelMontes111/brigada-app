@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:brigadapoli/src/bloc/validators.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:rxdart/rxdart.dart';
 
 
 class LoginBloc with Validators{
