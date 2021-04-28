@@ -17,12 +17,9 @@ class _TapViewPageState extends State<TapViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Brigada de emergencias'),
-        backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
-      ),
+      appBar: _appBarSelectIndex(),
       body: listWidgets[selectedIndex],
-      bottomNavigationBar: ConvexAppBar.badge({3: '21+'},
+      bottomNavigationBar: ConvexAppBar.badge({2: '21+'},
         items: [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.person_rounded, title: 'Profile'),
@@ -34,10 +31,23 @@ class _TapViewPageState extends State<TapViewPage> {
     );
   }
 
-  void onItemTapped(int index){
+  void onItemTapped(int index) {
     setState(() {
       selectedIndex = index;
     });
+  }
+
+  Widget _appBarSelectIndex(){
+    return selectedIndex == 0
+        ? AppBar(
+      title: Text('Brigadistas'),
+      backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+    )
+        : selectedIndex == 1
+        ? AppBar(
+      title: Text('Mi Perfil'),
+      backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+    ) : null;
   }
 
 }
