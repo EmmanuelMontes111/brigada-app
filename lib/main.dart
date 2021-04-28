@@ -3,6 +3,7 @@ import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/ui/home_page.dart';
 import 'package:brigadapoli/src/ui/list_brigadistas_page.dart';
 import 'package:brigadapoli/src/ui/login_page.dart';
+import 'package:brigadapoli/src/ui/tap_view_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         initialRoute: 'login',
         routes: {
           'login': (BuildContext context) => LoginPage(),
+          'viewPages' : (BuildContext context) => TapViewPage(),
           'home': (BuildContext context) => HomePage(),
           'list': (BuildContext context) => ListBrigasdistasPage(),
         },
