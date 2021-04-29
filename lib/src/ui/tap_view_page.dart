@@ -1,4 +1,5 @@
 import 'package:brigadapoli/src/ui/home_page.dart';
+import 'package:brigadapoli/src/ui/implements_page.dart';
 import 'package:brigadapoli/src/ui/profile_page.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -12,15 +13,17 @@ class TapViewPage extends StatefulWidget {
 class _TapViewPageState extends State<TapViewPage> {
 
   int selectedIndex = 0;
-  List<Widget> listWidgets = [HomePage(),ProfilePage()];
+  List<Widget> listWidgets = [ImplementsPage(),HomePage(),ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: _appBarSelectIndex(),
       body: listWidgets[selectedIndex],
       bottomNavigationBar: ConvexAppBar.badge({2: '21+'},
         items: [
+          TabItem(icon: Icons.list, title: 'Implements'),
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.person_rounded, title: 'Profile'),
         ],
@@ -40,14 +43,18 @@ class _TapViewPageState extends State<TapViewPage> {
   Widget _appBarSelectIndex(){
     return selectedIndex == 0
         ? AppBar(
-      title: Text('Brigadistas'),
+      title: Text('Implementos'),
       backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
     )
         : selectedIndex == 1
+        ? AppBar(
+      title: Text('Brigadistas'),
+      backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+    )
+        : selectedIndex == 2
         ? AppBar(
       title: Text('Mi Perfil'),
       backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
     ) : null;
   }
-
 }
