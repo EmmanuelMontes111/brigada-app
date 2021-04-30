@@ -1,4 +1,4 @@
-import 'dart:convert';
+ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:brigadapoli/src/models/head_phone_model.dart';
 
@@ -37,5 +37,13 @@ class HeadPhonesProvider {
       headPhonesList.add(headPhoneTemp);
     });
     return headPhonesList;
+  }
+
+
+  Future<bool> deleteHeadPhones(String idFirebase) async{
+    final url = Uri.https(_url, "headPhones/$idFirebase.json");
+    final response = await http.delete(url);
+    print(response.body);
+    return true;
   }
 }

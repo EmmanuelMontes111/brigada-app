@@ -41,7 +41,8 @@ class ListHeadPhonesPage extends StatelessWidget {
       background: Container(
         color: Colors.redAccent,
       ),
-      onDismissed: (direction){
+      onDismissed: (direction) {
+        headPhonesProvider.deleteHeadPhones(headPhone.idFirebase);
       },
       child: ListTile(
       title: Text('${headPhone.name}'),
