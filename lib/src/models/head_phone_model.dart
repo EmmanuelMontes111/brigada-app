@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-HeadPhonesModel headPhonesModelFromJson(String str) =>
-    HeadPhonesModel.fromJson(json.decode(str));
+HeadPhoneModel headPhonesModelFromJson(String str) =>
+    HeadPhoneModel.fromJson(json.decode(str));
 
-String headPhonesModelToJson(HeadPhonesModel data) =>
+String headPhonesModelToJson(HeadPhoneModel data) =>
     json.encode(data.toJson());
 
-class HeadPhonesModel {
-  HeadPhonesModel({
-    this.id,
-    this.name,
-    this.available,
+class HeadPhoneModel {
+  HeadPhoneModel({
+    this.id = '',
+    this.name = 'Audifono #',
+    this.available = true,
     this.imageUrl,
   });
 
@@ -19,8 +19,8 @@ class HeadPhonesModel {
   bool available;
   String imageUrl;
 
-  factory HeadPhonesModel.fromJson(Map<String, dynamic> json) =>
-      HeadPhonesModel(
+  factory HeadPhoneModel.fromJson(Map<String, dynamic> json) =>
+      HeadPhoneModel(
         id: json["id"],
         name: json["name"],
         available: json["available"],

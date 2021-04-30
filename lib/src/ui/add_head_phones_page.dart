@@ -1,3 +1,4 @@
+import 'package:brigadapoli/src/models/head_phone_model.dart';
 import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,8 @@ class AddHeadPhonesPage extends StatefulWidget {
 
 class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
   final formKey = GlobalKey<FormState>();
+
+  HeadPhoneModel headPhone = new HeadPhoneModel();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
                 children: <Widget>[
                   _creteId(),
                   _creteName(),
+                  _creteAvailable(),
                   _creteButton(),
                 ],
               ),
@@ -48,15 +52,16 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
 
   Widget _creteId() {
     return TextFormField(
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      initialValue: headPhone.id.toString(),
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: 'Id del Audifono',
       ),
+      onSaved: (value) => headPhone.id = value,
       validator: (value) {
         if (utils.isNumeric(value)) {
           return null;
-        }
-        else {
+        } else {
           return 'Sólo números';
         }
       },
@@ -65,18 +70,31 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
 
   Widget _creteName() {
     return TextFormField(
+      initialValue: headPhone.name.toString(),
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Nombre del Audifono',
       ),
+      onSaved: (value) => headPhone.name = value,
       validator: (value) {
         if (value.length < 3) {
           return 'Ingrese el nombre del Audifono';
-        }
-        else {
+        } else {
           return null;
         }
       },
+    );
+  }
+
+  Widget _creteAvailable() {
+    return Row(
+      children: <Widget>[
+        Text("Disponible"),
+        SizedBox(width: 200.0,height: 50.0,),
+        headPhone.available
+            ? Icon(Icons.album_outlined, color: Colors.green)
+            : Icon(Icons.circle, color: Colors.red),
+      ],
     );
   }
 
@@ -87,10 +105,10 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            )),
+          borderRadius: BorderRadius.circular(20.0),
+        )),
         backgroundColor:
-        MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
+            MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
         elevation: MaterialStateProperty.all(0.0),
       ),
       onPressed: _submit,
@@ -98,9 +116,13 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
   }
 
   void _submit() {
-    if (!formKey.currentState.validate()){
+    if (!formKey.currentState.validate()) {
       return;
     }
-   print("TODO OK");
+
+    formKey.currentState.save();
+
+    print(headPhone.id);
+    print(headPhone.name);
   }
 }
