@@ -20,6 +20,7 @@ class _TapViewPageState extends State<TapViewPage> {
 
     return Scaffold(
       appBar: _appBarSelectIndex(),
+      floatingActionButton: _floatActionButtonSelectIndex(),
       body: listWidgets[selectedIndex],
       bottomNavigationBar: ConvexAppBar.badge({2: '21+'},
         items: [
@@ -57,4 +58,17 @@ class _TapViewPageState extends State<TapViewPage> {
       backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
     ) : null;
   }
+
+ Widget _floatActionButtonSelectIndex() {
+    return selectedIndex == 0
+        ? FloatingActionButton(
+      child: Icon(
+        Icons.add,
+        color: Color.fromRGBO(4, 75, 172, 1.0),
+      ),
+      elevation: 10.0,
+      backgroundColor: Colors.white,
+      onPressed: () => Navigator.pushNamed(context, 'addHeadPhones'),
+    ) : SizedBox();
+ }
 }

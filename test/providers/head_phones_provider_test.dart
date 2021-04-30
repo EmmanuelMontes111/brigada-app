@@ -15,7 +15,7 @@ void main() {
     _headPhoneProvider = HeadPhonesProvider();
   });
 
-  test('validate string when is numeric', () async {
+  test('pos method is executed', () async {
     HeadPhoneModel headPhone = new HeadPhoneModel();
     final String _url = 'brigada-poli-default-rtdb.firebaseio.com';
     final url = Uri.https(_url, "headPhones.json");
@@ -27,4 +27,21 @@ void main() {
 
     expect(result, true);
   });
+
+  test('get method is executed', () async {
+    HeadPhoneModel headPhone = new HeadPhoneModel();
+    final String _url = 'brigada-poli-default-rtdb.firebaseio.com';
+    final url = Uri.https(_url, "headPhones.json");
+    when(_mockClient.get(url, headers: anyNamed('headers'))).thenAnswer(
+            (_) async => http.Response(
+            '{"available": true, "id": "68646767", "name": "Audifono #0"}', 200));
+
+    var result =  await _headPhoneProvider.loadHeadPhones();
+
+    expect(result, isInstanceOf<List<HeadPhoneModel>>());
+  });
+
+
+
+
 }
