@@ -1,6 +1,14 @@
+import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
-class AddHeadPhonesPage extends StatelessWidget {
+class AddHeadPhonesPage extends StatefulWidget {
+  @override
+  _AddHeadPhonesPageState createState() => _AddHeadPhonesPageState();
+}
+
+class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +31,7 @@ class AddHeadPhonesPage extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(15.0),
             child: Form(
+              key: formKey,
               child: Column(
                 children: <Widget>[
                   _creteId(),
@@ -43,6 +52,14 @@ class AddHeadPhonesPage extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Id del Audifono',
       ),
+      validator: (value) {
+        if (utils.isNumeric(value)) {
+          return null;
+        }
+        else {
+          return 'Sólo números';
+        }
+      },
     );
   }
 
@@ -52,6 +69,14 @@ class AddHeadPhonesPage extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Nombre del Audifono',
       ),
+      validator: (value) {
+        if (value.length < 3) {
+          return 'Ingrese el nombre del Audifono';
+        }
+        else {
+          return null;
+        }
+      },
     );
   }
 
@@ -62,13 +87,20 @@ class AddHeadPhonesPage extends StatelessWidget {
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        )),
+              borderRadius: BorderRadius.circular(20.0),
+            )),
         backgroundColor:
-            MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
+        MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0)),
         elevation: MaterialStateProperty.all(0.0),
       ),
-      onPressed: () {},
+      onPressed: _submit,
     );
+  }
+
+  void _submit() {
+    if (!formKey.currentState.validate()){
+      return;
+    }
+   print("TODO OK");
   }
 }
