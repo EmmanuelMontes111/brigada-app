@@ -1,4 +1,5 @@
 import 'package:brigadapoli/src/models/head_phone_model.dart';
+import 'package:brigadapoli/src/providers/head_phones_provider.dart';
 import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,8 @@ class AddHeadPhonesPage extends StatefulWidget {
 
 class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
   final formKey = GlobalKey<FormState>();
-
+  final headPhoneProvider = new HeadPhonesProvider();
+  
   HeadPhoneModel headPhone = new HeadPhoneModel();
 
   @override
@@ -90,7 +92,10 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
     return Row(
       children: <Widget>[
         Text("Disponible"),
-        SizedBox(width: 200.0,height: 50.0,),
+        SizedBox(
+          width: 200.0,
+          height: 50.0,
+        ),
         headPhone.available
             ? Icon(Icons.album_outlined, color: Colors.green)
             : Icon(Icons.circle, color: Colors.red),
@@ -119,10 +124,10 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
     if (!formKey.currentState.validate()) {
       return;
     }
-
     formKey.currentState.save();
 
     print(headPhone.id);
     print(headPhone.name);
+    headPhoneProvider.createHeadPhone(headPhone);
   }
 }
