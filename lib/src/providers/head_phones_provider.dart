@@ -21,6 +21,19 @@ class HeadPhonesProvider {
     return true;
   }
 
+  Future<bool> editHeadPhone(HeadPhoneModel headPhone) async {
+    final url = Uri.https(_url, "headPhones/${headPhone.idFirebase}.json");
+
+    final response = await http.put(
+        url, body: headPhonesModelToJson(headPhone));
+
+    final decodeData = json.decode(response.body);
+
+    print(decodeData);
+
+    return true;
+  }
+
   Future<List<HeadPhoneModel>> loadHeadPhones() async {
     final url = Uri.https(_url, "headPhones.json");
     final response = await http.get(url);

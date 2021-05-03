@@ -16,6 +16,13 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final HeadPhoneModel headPhoneData = ModalRoute.of(context).settings.arguments;
+
+    if(headPhoneData != null) {
+      headPhone = headPhoneData;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Agregar Audifono"),
@@ -128,6 +135,11 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
 
     print(headPhone.id);
     print(headPhone.name);
-    headPhoneProvider.createHeadPhone(headPhone);
+
+    if(headPhone.idFirebase == null){
+      headPhoneProvider.createHeadPhone(headPhone);
+    }
+    else{headPhoneProvider.editHeadPhone(headPhone);
+    }
   }
 }

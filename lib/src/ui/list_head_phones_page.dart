@@ -47,7 +47,7 @@ class ListHeadPhonesPage extends StatelessWidget {
       child: ListTile(
       title: Text('${headPhone.name}'),
       subtitle: Text('${headPhone.id}'),
-        onTap: () => Navigator.pushNamed(context, 'addHeadPhones'),
+        onTap: () => Navigator.pushNamed(context, 'addHeadPhones', arguments: headPhone),
       ),
     );
   }

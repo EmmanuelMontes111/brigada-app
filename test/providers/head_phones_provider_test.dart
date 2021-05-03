@@ -53,6 +53,19 @@ void main() {
     expect(result, true);
   });
 
+  test('put method is executed', () async {
+    HeadPhoneModel headPhone = new HeadPhoneModel();
+    final String _url = 'brigada-poli-default-rtdb.firebaseio.com';
+    final url = Uri.https(_url, "headPhones.json");
+    when(_mockClient.put(url, headers: anyNamed('headers'))).thenAnswer(
+            (_) async => http.Response(
+            '{"available": true, "id": "68646767", "name": "Audifono #0"}', 200));
+
+    var result =  await _headPhoneProvider.createHeadPhone(headPhone);
+
+    expect(result, true);
+  });
+
 
 
 }
