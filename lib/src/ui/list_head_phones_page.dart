@@ -11,8 +11,11 @@ class ListHeadPhonesPage extends StatelessWidget {
     final bloc = Provider.of(context);
 
     return Container(
-      child: Container(child:
-        _createList(),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Container(child:
+          _createList(),
+        ),
       ),
     );
   }

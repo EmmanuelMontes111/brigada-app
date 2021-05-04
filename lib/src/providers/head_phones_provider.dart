@@ -39,6 +39,7 @@ class HeadPhonesProvider {
     final response = await http.get(url);
 
     final Map<String, dynamic> decodeData = json.decode(response.body);
+    // ignore: deprecated_member_use
     final List<HeadPhoneModel> headPhonesList =  new List();
     if (decodeData == null) return [];
 

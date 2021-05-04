@@ -7,7 +7,7 @@ String headPhonesModelToJson(HeadPhoneModel data) => json.encode(data.toJson());
 
 class HeadPhoneModel {
   HeadPhoneModel({
-    this.idFirebase = '',
+    this.idFirebase,
     this.id = '',
     this.name = 'Audifono #',
     this.available = true,
@@ -29,7 +29,7 @@ class HeadPhoneModel {
       );
 
   Map<String, dynamic> toJson() => {
-        // "idFirebase": idFirebase,
+        "idFirebase": idFirebase,
         "id": id,
         "name": name,
         "available": available,

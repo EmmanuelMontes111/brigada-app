@@ -10,8 +10,9 @@ class AddHeadPhonesPage extends StatefulWidget {
 
 class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
   final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   final headPhoneProvider = new HeadPhonesProvider();
-  
+
   HeadPhoneModel headPhone = new HeadPhoneModel();
 
   @override
@@ -24,6 +25,7 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
     }
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text("Agregar Audifono"),
         actions: <Widget>[
@@ -141,5 +143,15 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
     }
     else{headPhoneProvider.editHeadPhone(headPhone);
     }
+    viewSnackbar("Registro Guardado");
+  }
+
+  void viewSnackbar(String message) {
+    final snackbar = SnackBar(
+      content: Text(message),
+      duration: Duration(milliseconds: 1500),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    // scaffoldKey.currentState.showSnackBar(snackbar);
   }
 }
