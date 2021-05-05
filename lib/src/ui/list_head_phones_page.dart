@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class ListHeadPhonesPage extends StatelessWidget {
   final headPhonesProvider = new HeadPhonesProvider();
-
+  bool isDelete = false;
   @override
   Widget build(BuildContext context) {
     final bloc = Provider.of(context);
@@ -45,7 +45,37 @@ class ListHeadPhonesPage extends StatelessWidget {
         color: Colors.redAccent,
       ),
       onDismissed: (direction) {
-        headPhonesProvider.deleteHeadPhones(headPhone.idFirebase);
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(
+                  'ELIMINAR',
+                  style:
+                  TextStyle(color: Colors.red, fontSize: 20.0),
+                ),
+                content: Text(
+                    '¿Esta segur@ de ELIMINAR el ${headPhone.name}'),
+                actions: [
+                  TextButton(
+                    child: Text("Cancelar"),
+                    onPressed: () {
+                      isDelete = false;
+                      Navigator.pop(context);
+                    },
+                  ),
+                  TextButton(
+                    child: Text("Aceptar"),
+                    onPressed: () {
+                      isDelete = true;
+                      headPhonesProvider.deleteHeadPhones(headPhone.idFirebase);
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              );
+            });
+
       },
       child: ListTile(
       title: Text('${headPhone.name}'),
