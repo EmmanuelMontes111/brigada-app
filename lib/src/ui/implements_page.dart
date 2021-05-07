@@ -5,8 +5,12 @@ import 'list_kits_page.dart';
 import 'list_radios_page.dart';
 
 // ignore: must_be_immutable
-class ImplementsPage extends StatelessWidget {
+class ImplementsPage extends StatefulWidget {
+  @override
+  _ImplementsPageState createState() => _ImplementsPageState();
+}
 
+class _ImplementsPageState extends State<ImplementsPage> {
   Map<String, Widget> tabsIcons = {
     'Radio': CircleAvatar(
       backgroundColor: Colors.white,
@@ -22,12 +26,10 @@ class ImplementsPage extends StatelessWidget {
     ),
   };
 
+  Widget _floatingActionButton;
+
   @override
   Widget build(BuildContext context) {
-    return tabBarWidget();
-  }
-
-  Widget tabBarWidget() {
     List<Tab> androidTabs = [];
     tabsIcons.forEach((key, value) {
       androidTabs.add(
@@ -37,9 +39,21 @@ class ImplementsPage extends StatelessWidget {
         ),
       );
     });
+
+    _floatingActionButton = FloatingActionButton(
+      child: Icon(
+        Icons.add,
+        color: Color.fromRGBO(4, 75, 172, 1.0),
+      ),
+      elevation: 10.0,
+      backgroundColor: Colors.white,
+      onPressed: () => Navigator.pushNamed(context, 'addkits'),
+    );
+
     return DefaultTabController(
       length: tabsIcons.length,
       child: Scaffold(
+        floatingActionButton: _floatingActionButton,
         appBar: AppBar(
           bottom: TabBar(
             indicatorColor: Colors.white,
@@ -51,12 +65,58 @@ class ImplementsPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            ListRadiosPage(),
-            ListKitsPage(),
-            ListHeadPhonesPage(),
+            _listRadioPage(context),
+            _listKitsPage(context),
+            _listHeadPhonesPag(context),
           ],
         ),
       ),
     );
+  }
+
+  Widget _listRadioPage(BuildContext context) {
+    setState(() {
+      _floatingActionButton = FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          color: Color.fromRGBO(4, 75, 172, 1.0),
+        ),
+        elevation: 10.0,
+        backgroundColor: Colors.white,
+        onPressed: () => Navigator.pushNamed(context, 'addHeadPhones'),
+      );
+    });
+    return ListRadiosPage();
+  }
+
+  Widget _listKitsPage(BuildContext context) {
+    setState(() {
+      _floatingActionButton = FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          color: Color.fromRGBO(4, 75, 172, 1.0),
+        ),
+        elevation: 10.0,
+        backgroundColor: Colors.white,
+        onPressed: () => Navigator.pushNamed(context, 'addkits'),
+      );
+    });
+
+    return ListKitsPage();
+  }
+
+  Widget _listHeadPhonesPag(BuildContext context) {
+    setState(() {
+      _floatingActionButton = FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          color: Color.fromRGBO(4, 75, 172, 1.0),
+        ),
+        elevation: 10.0,
+        backgroundColor: Colors.white,
+        onPressed: () => Navigator.pushNamed(context, 'addHeadPhones'),
+      );
+    });
+    return ListHeadPhonesPage();
   }
 }

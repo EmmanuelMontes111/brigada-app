@@ -9,7 +9,7 @@ class KitModel {
   KitModel({
     this.idFirebase,
     this.id = '',
-    this.name = 'Audifono #',
+    this.name = 'Botiquín #',
     this.available = true,
     this.imageUrl,
   });
