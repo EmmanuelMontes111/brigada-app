@@ -3,7 +3,7 @@ import 'dart:convert';
 RadioModel radiosModelFromJson(String str) =>
     RadioModel.fromJson(json.decode(str));
 
-String kitsModelToJson(RadioModel data) => json.encode(data.toJson());
+String radiosModelToJson(RadioModel data) => json.encode(data.toJson());
 
 class RadioModel {
   RadioModel({
