@@ -40,6 +40,7 @@ class _TapViewPageState extends State<TapViewPage> {
     });
   }
 
+  // ignore: missing_return
   Widget _appBarSelectIndex(){
     switch(selectedIndex) {
       case 0: {

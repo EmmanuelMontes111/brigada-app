@@ -1,14 +1,13 @@
-import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/models/head_phone_model.dart';
 import 'package:brigadapoli/src/providers/head_phones_provider.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ListHeadPhonesPage extends StatelessWidget {
   final headPhonesProvider = new HeadPhonesProvider();
   bool isDelete = false;
   @override
   Widget build(BuildContext context) {
-    final bloc = Provider.of(context);
 
     return Container(
       child: Padding(
@@ -84,5 +83,4 @@ class ListHeadPhonesPage extends StatelessWidget {
       ),
     );
   }
-
 }

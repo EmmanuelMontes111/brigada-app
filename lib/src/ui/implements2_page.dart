@@ -78,6 +78,7 @@ class _Implements2PageState extends State<Implements2Page> {
     );
   }
 
+  // ignore: missing_return
   Widget _floatingActionButtonTapBodies(){
     switch(theriGroupValue) {
       case 0: {
