@@ -8,7 +8,7 @@ class KitsProvider {
 
 
   Future<bool> createKit(KitModel kit) async {
-    final url = Uri.https(_url, "kit.json");
+    final url = Uri.https(_url, "kits.json");
 
 
     final response = await http.post(
@@ -35,7 +35,7 @@ class KitsProvider {
   }
 
   Future<List<KitModel>> loadkits() async {
-    final url = Uri.https(_url, "kit.json");
+    final url = Uri.https(_url, "kits.json");
     final response = await http.get(url);
 
     final Map<String, dynamic> decodeData = json.decode(response.body);
@@ -54,8 +54,8 @@ class KitsProvider {
   }
 
 
-  Future<bool> deleteHeadPhones(String idFirebase) async{
-    final url = Uri.https(_url, "kit/$idFirebase.json");
+  Future<bool> deleteKits(String idFirebase) async{
+    final url = Uri.https(_url, "kits/$idFirebase.json");
     final response = await http.delete(url);
     print(response.body);
     return true;

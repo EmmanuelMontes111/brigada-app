@@ -8,7 +8,7 @@ class RadiosProvider {
 
 
   Future<bool> createRadio(RadioModel radio) async {
-    final url = Uri.https(_url, "radio.json");
+    final url = Uri.https(_url, "radios.json");
 
 
     final response = await http.post(
@@ -35,7 +35,7 @@ class RadiosProvider {
   }
 
   Future<List<RadioModel>> loadRadios() async {
-    final url = Uri.https(_url, "radio.json");
+    final url = Uri.https(_url, "radios.json");
     final response = await http.get(url);
 
     final Map<String, dynamic> decodeData = json.decode(response.body);
@@ -55,7 +55,7 @@ class RadiosProvider {
 
 
   Future<bool> deleteRadios(String idFirebase) async{
-    final url = Uri.https(_url, "radio/$idFirebase.json");
+    final url = Uri.https(_url, "radios/$idFirebase.json");
     final response = await http.delete(url);
     print(response.body);
     return true;

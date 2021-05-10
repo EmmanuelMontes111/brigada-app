@@ -50,7 +50,7 @@ void main() {
             '{"available": true, "id": "68646767", "name": "Botiquín #0"}',
             200));
 
-    var result = await _kitProvider.deleteHeadPhones("68646767");
+    var result = await _kitProvider.deleteKits("68646767");
 
     expect(result, true);
   });

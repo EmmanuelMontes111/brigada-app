@@ -65,7 +65,7 @@ class ListKitsPage extends StatelessWidget{
                     child: Text("Aceptar"),
                     onPressed: () {
                       isDelete = true;
-                      kitsProvider.deleteHeadPhones(kit.idFirebase);
+                      kitsProvider.deleteKits(kit.idFirebase);
                       Navigator.pop(context);
                     },
                   ),
