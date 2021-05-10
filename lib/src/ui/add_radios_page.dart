@@ -66,7 +66,7 @@ class _AddRadiosPageState extends State<AddRadiosPage> {
       initialValue: radio.id.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-        labelText: 'Id del Botiquín',
+        labelText: 'Id del Radio',
       ),
       onSaved: (value) => radio.id = value,
       validator: (value) {

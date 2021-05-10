@@ -108,7 +108,7 @@ class _Implements2PageState extends State<Implements2Page> {
       break;
 
       case 2: {
-        FloatingActionButton(
+        return FloatingActionButton(
           child: Icon(
             Icons.add,
             color: Color.fromRGBO(4, 75, 172, 1.0),
@@ -119,6 +119,17 @@ class _Implements2PageState extends State<Implements2Page> {
         );
       }
       break;
+      default:
+        return FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            color: Color.fromRGBO(4, 75, 172, 1.0),
+          ),
+          elevation: 10.0,
+          backgroundColor: Colors.white,
+          onPressed: () => Navigator.pushNamed(context, 'addHeadPhones'),
+        );
+        break;
     }
   }
 
