@@ -39,6 +39,7 @@ class _Implements2PageState extends State<Implements2Page> {
       ),
     ),
   };
+
   List<Widget> bodies = [
     ListRadiosPage(),
     ListKitsPage(),
@@ -48,6 +49,7 @@ class _Implements2PageState extends State<Implements2Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _floatingActionButtonTapBodies(),
       body: bodies[theriGroupValue],
       appBar: AppBar(
         bottom: PreferredSize(
@@ -75,4 +77,48 @@ class _Implements2PageState extends State<Implements2Page> {
       ),
     );
   }
+
+  Widget _floatingActionButtonTapBodies(){
+    switch(theriGroupValue) {
+      case 0: {
+        return FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            color: Color.fromRGBO(4, 75, 172, 1.0),
+          ),
+          elevation: 10.0,
+          backgroundColor: Colors.white,
+          onPressed: () => Navigator.pushNamed(context, 'addRadios'),
+        );
+      }
+      break;
+
+      case 1: {
+        return FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            color: Color.fromRGBO(4, 75, 172, 1.0),
+          ),
+          elevation: 10.0,
+          backgroundColor: Colors.white,
+          onPressed: () => Navigator.pushNamed(context, 'addkits'),
+        );
+      }
+      break;
+
+      case 2: {
+        FloatingActionButton(
+          child: Icon(
+            Icons.add,
+            color: Color.fromRGBO(4, 75, 172, 1.0),
+          ),
+          elevation: 10.0,
+          backgroundColor: Colors.white,
+          onPressed: () => Navigator.pushNamed(context, 'addHeadPhones'),
+        );
+      }
+      break;
+    }
+  }
+
 }

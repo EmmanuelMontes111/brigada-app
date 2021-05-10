@@ -1,6 +1,7 @@
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/ui/add_head_phones_page.dart';
 import 'package:brigadapoli/src/ui/add_kits_page.dart';
+import 'package:brigadapoli/src/ui/add_radios_page.dart';
 import 'package:brigadapoli/src/ui/home_page.dart';
 import 'package:brigadapoli/src/ui/implements2_page.dart';
 import 'package:brigadapoli/src/ui/implements_page.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           'implements': (BuildContext context) => ImplementsPage(),
           'addHeadPhones': (BuildContext context) => AddHeadPhonesPage(),
           'addkits': (BuildContext context) => AddKitsPage(),
+          'addRadios': (BuildContext context) => AddRadiosPage(),
           'implements2': (BuildContext context) => Implements2Page(),
         },
         theme: ThemeData(
