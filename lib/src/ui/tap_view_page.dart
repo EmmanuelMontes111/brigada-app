@@ -12,7 +12,7 @@ class TapViewPage extends StatefulWidget {
 
 class _TapViewPageState extends State<TapViewPage> {
 
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   List<Widget> listWidgets = [ImplementsPage(),HomePage(),ProfilePage()];
 
   @override
@@ -27,6 +27,7 @@ class _TapViewPageState extends State<TapViewPage> {
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.person_rounded, title: 'Profile'),
         ],
+        initialActiveIndex: 1,
         onTap: onItemTapped,
         activeColor: Colors.white,
         backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
