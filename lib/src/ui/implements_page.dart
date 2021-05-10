@@ -5,12 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class Implements2Page extends StatefulWidget {
+class ImplementsPage extends StatefulWidget {
   @override
-  _Implements2PageState createState() => _Implements2PageState();
+  _ImplementsPageState createState() => _ImplementsPageState();
 }
 
-class _Implements2PageState extends State<Implements2Page> {
+class _ImplementsPageState extends State<ImplementsPage> {
   int theriGroupValue = 0;
 
   final Map<int, Widget> pageWidgets = const <int, Widget>{
