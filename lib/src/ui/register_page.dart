@@ -1,9 +1,13 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
+import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
+
+  final userProvider = new UserProvider();
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -11,12 +15,12 @@ class RegisterPage extends StatelessWidget {
         body: Stack(
           children: <Widget>[
             _createBackground(context, screenSize),
-            _loginForm(context, screenSize),
+            _registerForm(context, screenSize),
           ],
         ));
   }
 
-  Widget _loginForm(BuildContext context, final screenSize) {
+  Widget _registerForm(BuildContext context, final screenSize) {
     final bloc = Provider.of(context);
 
     return SingleChildScrollView(
@@ -53,7 +57,7 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(height: 30.0),
                 _createPassword(bloc),
                 SizedBox(height: 30.0),
-                _createBotonLogin(bloc),
+                _createBotonRegister(bloc),
                 SizedBox(height: 20.0,),
               ],
             ),
@@ -120,7 +124,7 @@ class RegisterPage extends StatelessWidget {
         });
   }
 
-  Widget _createBotonLogin(LoginBloc bloc) {
+  Widget _createBotonRegister(LoginBloc bloc) {
     //formValidStream
 
     return StreamBuilder(
@@ -141,13 +145,14 @@ class RegisterPage extends StatelessWidget {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _goToHomePage(bloc, context) : null,
+            onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
           );
         });
   }
 
-  _goToHomePage(LoginBloc bloc, BuildContext context) {
-    Navigator.pushReplacementNamed(context, 'home');
+  _register(LoginBloc bloc, BuildContext context) {
+    userProvider.newUser(bloc.email, bloc.password);
+    // Navigator.pushReplacementNamed(context, 'home');
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
