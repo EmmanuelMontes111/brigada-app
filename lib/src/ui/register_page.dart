@@ -4,7 +4,7 @@ import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
 
   final userProvider = new UserProvider();
 
@@ -13,14 +13,14 @@ class LoginPage extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: Stack(
-      children: <Widget>[
-        _createBackground(context, screenSize),
-        _loginForm(context, screenSize),
-      ],
-    ));
+          children: <Widget>[
+            _createBackground(context, screenSize),
+            _registerForm(context, screenSize),
+          ],
+        ));
   }
 
-  Widget _loginForm(BuildContext context, final screenSize) {
+  Widget _registerForm(BuildContext context, final screenSize) {
     final bloc = Provider.of(context);
 
     return SingleChildScrollView(
@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  "Ingreso",
+                  "Crear Cuenta",
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(height: 20.0),
@@ -57,14 +57,14 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: 30.0),
                 _createPassword(bloc),
                 SizedBox(height: 30.0),
-                _createBotonLogin(bloc),
+                _createBotonRegister(bloc),
                 SizedBox(height: 20.0,),
               ],
             ),
           ),
           TextButton(
-            child: Text('Crear una nueva cuenta'),
-            onPressed: () => Navigator.pushReplacementNamed(context, 'register'),
+            child: Text('¿Ya tienes cuenta? Login'),
+            onPressed: () => Navigator.pushNamed(context, 'login'),
           ),
           SizedBox(
             height: 100.0,
@@ -124,7 +124,7 @@ class LoginPage extends StatelessWidget {
         });
   }
 
-  Widget _createBotonLogin(LoginBloc bloc) {
+  Widget _createBotonRegister(LoginBloc bloc) {
     //formValidStream
 
     return StreamBuilder(
@@ -133,28 +133,26 @@ class LoginPage extends StatelessWidget {
           return ElevatedButton(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-              child: Text('Ingresar'),
+              child: Text('Registrar'),
             ),
             style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              )),
+                    borderRadius: BorderRadius.circular(5.0),
+                  )),
               backgroundColor: snapshot.hasData
                   ? MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0))
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _goToTapViewPage(bloc, context) : null,
+            onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
           );
         });
   }
 
-  _goToTapViewPage(LoginBloc bloc, BuildContext context) {
-
-    userProvider.login(bloc.email, bloc.password);
-    
-   // Navigator.pushReplacementNamed(context, 'viewPages');
+  _register(LoginBloc bloc, BuildContext context) {
+    userProvider.newUser(bloc.email, bloc.password);
+    // Navigator.pushReplacementNamed(context, 'home');
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
