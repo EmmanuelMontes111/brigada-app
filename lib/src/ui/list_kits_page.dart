@@ -1,6 +1,7 @@
 import 'package:brigadapoli/src/models/kit_model.dart';
 import 'package:brigadapoli/src/providers/kit_provider.dart';
 import 'package:flutter/material.dart';
+// ignore: must_be_immutable
 class ListKitsPage extends StatelessWidget{
   final kitsProvider = new KitsProvider();
   bool isDelete = false;
