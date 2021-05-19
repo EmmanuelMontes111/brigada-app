@@ -1,6 +1,7 @@
 import 'package:brigadapoli/src/models/radio_model.dart';
 import 'package:brigadapoli/src/providers/radio_provider.dart';
 import 'package:flutter/material.dart';
+// ignore: must_be_immutable
 class ListRadiosPage extends StatelessWidget{
   final radiosProvider = new RadiosProvider();
   bool isDelete = false;
