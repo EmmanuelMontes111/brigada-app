@@ -1,3 +1,4 @@
+import 'package:brigadapoli/src/%20user_preferences/user_preferences.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/ui/add_head_phones_page.dart';
 import 'package:brigadapoli/src/ui/add_kits_page.dart';
@@ -9,16 +10,26 @@ import 'package:brigadapoli/src/ui/register_page.dart';
 import 'package:brigadapoli/src/ui/tap_view_page.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final preferences = new UserPreferences();
+  await preferences.initPrefs();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final preferences = new UserPreferences();
+    print(preferences.token);
+
     return Provider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'register',
+        initialRoute: 'login',
         routes: {
           'login': (BuildContext context) => LoginPage(),
           'viewPages': (BuildContext context) => TapViewPage(),
