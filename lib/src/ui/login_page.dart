@@ -159,7 +159,7 @@ class LoginPage extends StatelessWidget {
      Navigator.pushReplacementNamed(context, 'viewPages');
    }
    else{
-     viewAlert(context, info['message']);
+     viewAlert(context,"Porfavor vuelve a intentarlo");
    }
     
    // Navigator.pushReplacementNamed(context, 'viewPages');

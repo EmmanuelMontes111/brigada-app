@@ -15,7 +15,7 @@ void viewAlert(BuildContext context, String message) {
       builder: (context) {
         return AlertDialog(
           title: Text('Informacion Incorrecta'),
-          content: Text('Por Favor vuelva a intentarlo'),
+          content: Text(message),
           actions: <Widget>[
             TextButton(
               child: Text('Ok'),
