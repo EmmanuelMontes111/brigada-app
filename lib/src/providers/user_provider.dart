@@ -28,7 +28,7 @@ class UserProvider {
 
       return {'ok': true};
     } else {
-      return {'ok': true, 'mensaje': decodedResponse['message']};
+      return {'ok': false, 'message': decodedResponse['message']};
     }
   }
 
@@ -51,7 +51,7 @@ class UserProvider {
       _preferences.token = decodedResponse['idToken'];
       return {'ok': true};
     } else {
-      return {'ok': true, 'mensaje': decodedResponse['message']};
+      return {'ok': false, 'message': decodedResponse['message']};
     }
   }
 }

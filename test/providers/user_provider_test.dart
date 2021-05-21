@@ -41,10 +41,10 @@ void main() {
     final String _url = 'brigada-poli-default-rtdb.firebaseio.com';
     final url = Uri.https(_url, "userModels.json");
     when(_mockClient.post(url, body: anyNamed('body'))).thenAnswer(
-        (_) async => http.Response('{"ok": true, "mensaje": null}', 200));
+        (_) async => http.Response('{"ok": true, "message": null}', 200));
 
     var result = await _userProvider.login(email, password);
 
-    expect(result, {'ok': true, 'mensaje': null});
+    expect(result, {'ok': false, 'message': null});
   });
 }
