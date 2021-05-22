@@ -30,6 +30,13 @@ class HeadPhonesBloc {
     await _headPhonesProvider.editHeadPhone(headPhone);
     _loadController.sink.add(false);
   }
+
+  void deleteHeadPhone(String id) async {
+    _loadController.sink.add(true);
+    await _headPhonesProvider.deleteHeadPhones(id);
+    _loadController.sink.add(false);
+  }
+
   dispose() {
     _headPhoneController?.close();
     _loadController?.close();
