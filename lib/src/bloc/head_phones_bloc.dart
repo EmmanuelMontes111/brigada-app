@@ -23,9 +23,13 @@ class HeadPhonesBloc {
     _loadController.sink.add(true);
     await _headPhonesProvider.createHeadPhone(headPhone);
     _loadController.sink.add(false);
-
   }
 
+  void editHeadPhone(HeadPhoneModel headPhone) async {
+    _loadController.sink.add(true);
+    await _headPhonesProvider.editHeadPhone(headPhone);
+    _loadController.sink.add(false);
+  }
   dispose() {
     _headPhoneController?.close();
     _loadController?.close();
