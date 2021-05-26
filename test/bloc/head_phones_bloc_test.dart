@@ -43,4 +43,19 @@ void main() {
     });
     _bloc.loadHeadPhones();
   });
+
+  test('add HeadPhones successful test ', () async {
+    HeadPhoneModel headPhoneModel = new HeadPhoneModel();
+    Future<bool> response;
+
+    final mockHeadPhonesProvider = MockHeadPhonesProvider();
+    when(mockHeadPhonesProvider.createHeadPhone(any)).thenReturn(response);
+
+    _bloc = new HeadPhonesBloc.withMocks(mockHeadPhonesProvider);
+
+    _bloc.headPhonesStream.listen((iscreated) {
+      expect(iscreated, true);
+    });
+    _bloc.addHeadPhone(headPhoneModel);
+  });
 }
