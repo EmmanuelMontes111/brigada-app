@@ -6,12 +6,18 @@ class HeadPhonesBloc {
   final _headPhoneController = new BehaviorSubject<List<HeadPhoneModel>>();
   final _loadController = new BehaviorSubject<bool>();
 
-  final _headPhonesProvider = new HeadPhonesProvider();
+  HeadPhonesProvider _headPhonesProvider;
 
   Stream<List<HeadPhoneModel>> get headPhonesStream =>
       _headPhoneController.stream;
 
   Stream<bool> get loadStream => _loadController.stream;
+
+  HeadPhonesBloc(){
+    this._headPhonesProvider = new  HeadPhonesProvider();
+  }
+
+  HeadPhonesBloc.withMocks(this._headPhonesProvider);
 
   void loadHeadPhones() async {
     final headPhones = await _headPhonesProvider.loadHeadPhones();
