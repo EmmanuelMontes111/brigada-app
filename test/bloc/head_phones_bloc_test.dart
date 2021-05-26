@@ -13,7 +13,7 @@ void main() {
   //   _bloc = new HeadPhonesBloc();
   // });
 
-  test('load HeadPhones test when', () async {
+  test('load HeadPhones test', () async {
     HeadPhoneModel headPhoneModel = new HeadPhoneModel();
     final List<HeadPhoneModel> headPhonesList1 = new List();
     headPhonesList1.add(headPhoneModel);
@@ -26,6 +26,20 @@ void main() {
 
     _bloc.headPhonesStream.listen((headPhone) {
       expect(headPhone, headPhonesList);
+    });
+    _bloc.loadHeadPhones();
+  });
+
+  test('load HeadPhones test when the list is null', () async {
+    Future<List<HeadPhoneModel>> headPhonesList = null;
+
+    final mockHeadPhonesProvider = MockHeadPhonesProvider();
+    when(mockHeadPhonesProvider.loadHeadPhones()).thenReturn(headPhonesList);
+
+    _bloc = new HeadPhonesBloc.withMocks(mockHeadPhonesProvider);
+
+    _bloc.headPhonesStream.listen((headPhone) {
+      expect(headPhone, null);
     });
     _bloc.loadHeadPhones();
   });
