@@ -15,6 +15,7 @@ void main() {
 
   test('load HeadPhones test', () async {
     HeadPhoneModel headPhoneModel = new HeadPhoneModel();
+    // ignore: deprecated_member_use
     final List<HeadPhoneModel> headPhonesList1 = new List();
     headPhonesList1.add(headPhoneModel);
     Future<List<HeadPhoneModel>> headPhonesList;
@@ -31,7 +32,8 @@ void main() {
   });
 
   test('load HeadPhones test when the list is null', () async {
-    Future<List<HeadPhoneModel>> headPhonesList = null;
+    Future<List<HeadPhoneModel>> headPhonesList;
+    headPhonesList = null;
 
     final mockHeadPhonesProvider = MockHeadPhonesProvider();
     when(mockHeadPhonesProvider.loadHeadPhones()).thenReturn(headPhonesList);
