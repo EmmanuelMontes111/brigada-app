@@ -22,6 +22,12 @@ class KitsBloc {
     this._kitsProvider = new  KitsProvider();
   }
 
+  KitsBloc.withMocks(this._kitsProvider);
+
+  void loadKits() async {
+    final kits = await _kitsProvider.loadkits();
+    _kitController.sink.add(kits);
+  }
 
   dispose() {
     _kitController?.close();
