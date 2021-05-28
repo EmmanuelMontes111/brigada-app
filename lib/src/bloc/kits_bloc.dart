@@ -41,6 +41,12 @@ class KitsBloc {
     _loadController.sink.add(false);
   }
 
+  void deletekits(String id) async {
+    _loadController.sink.add(true);
+    await _kitsProvider..deleteKits(id);
+    _loadController.sink.add(false);
+  }
+
   dispose() {
     _kitController?.close();
     _loadController?.close();
