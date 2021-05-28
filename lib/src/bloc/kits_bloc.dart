@@ -35,6 +35,12 @@ class KitsBloc {
     _loadController.sink.add(false);
   }
 
+  void editkits(KitModel kit) async {
+    _loadController.sink.add(true);
+    await _kitsProvider.editKit(kit);
+    _loadController.sink.add(false);
+  }
+
   dispose() {
     _kitController?.close();
     _loadController?.close();
