@@ -29,6 +29,12 @@ class KitsBloc {
     _kitController.sink.add(kits);
   }
 
+  void addkits(KitModel kit) async {
+    _loadController.sink.add(true);
+    await _kitsProvider.createKit(kit);
+    _loadController.sink.add(false);
+  }
+
   dispose() {
     _kitController?.close();
     _loadController?.close();
