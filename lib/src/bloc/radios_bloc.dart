@@ -1,49 +1,38 @@
 import 'package:brigadapoli/src/models/head_phone_model.dart';
+import 'package:brigadapoli/src/models/radio_model.dart';
+import 'package:brigadapoli/src/models/radio_model.dart';
+import 'package:brigadapoli/src/models/radio_model.dart';
+import 'package:brigadapoli/src/models/radio_model.dart';
 import 'package:brigadapoli/src/providers/head_phones_provider.dart';
+import 'package:brigadapoli/src/providers/radio_provider.dart';
+import 'package:brigadapoli/src/providers/radio_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
-class HeadPhonesBloc {
-  final _headPhoneController = new BehaviorSubject<List<HeadPhoneModel>>();
+class RadiosBloc {
+  final _radioController = new BehaviorSubject<List<RadioModel>>();
   final _loadController = new BehaviorSubject<bool>();
 
-  HeadPhonesProvider _headPhonesProvider;
 
-  Stream<List<HeadPhoneModel>> get headPhonesStream =>
-      _headPhoneController.stream;
+  RadiosProvider _radiosProvider;
+
+  Stream<List<RadioModel>> get headPhonesStream =>
+      _radioController.stream;
 
   Stream<bool> get loadStream => _loadController.stream;
 
-  HeadPhonesBloc(){
-    this._headPhonesProvider = new  HeadPhonesProvider();
+  RadiosBloc(){
+    this._radiosProvider = new  RadiosProvider();
   }
 
-  HeadPhonesBloc.withMocks(this._headPhonesProvider);
+  RadiosBloc.withMocks(this._radiosProvider);
 
-  void loadHeadPhones() async {
-    final headPhones = await _headPhonesProvider.loadHeadPhones();
-    _headPhoneController.sink.add(headPhones);
-  }
-
-  void addHeadPhone(HeadPhoneModel headPhone) async {
-    _loadController.sink.add(true);
-    await _headPhonesProvider.createHeadPhone(headPhone);
-    _loadController.sink.add(false);
-  }
-
-  void editHeadPhone(HeadPhoneModel headPhone) async {
-    _loadController.sink.add(true);
-    await _headPhonesProvider.editHeadPhone(headPhone);
-    _loadController.sink.add(false);
-  }
-
-  void deleteHeadPhone(String id) async {
-    _loadController.sink.add(true);
-    await _headPhonesProvider.deleteHeadPhones(id);
-    _loadController.sink.add(false);
+  void loadRadios() async {
+    final radios = await _radiosProvider.loadRadios();
+    _radioController.sink.add(radios);
   }
 
   dispose() {
-    _headPhoneController?.close();
+    _radioController?.close();
     _loadController?.close();
   }
 }
