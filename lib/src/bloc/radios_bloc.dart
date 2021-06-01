@@ -35,6 +35,12 @@ class RadiosBloc {
     _loadController.sink.add(false);
   }
 
+  void deleteRadio(String id) async {
+    _loadController.sink.add(true);
+    await _radiosProvider.deleteRadios(id);
+    _loadController.sink.add(false);
+  }
+
   dispose() {
     _radioController?.close();
     _loadController?.close();
