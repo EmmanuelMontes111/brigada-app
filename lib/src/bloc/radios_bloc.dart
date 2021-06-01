@@ -8,7 +8,7 @@ class RadiosBloc {
 
   RadiosProvider _radiosProvider;
 
-  Stream<List<RadioModel>> get headPhonesStream => _radioController.stream;
+  Stream<List<RadioModel>> get radiosStream => _radioController.stream;
 
   Stream<bool> get loadStream => _loadController.stream;
 
@@ -26,6 +26,12 @@ class RadiosBloc {
   void addRadios(RadioModel radio) async {
     _loadController.sink.add(true);
     await _radiosProvider.createRadio(radio);
+    _loadController.sink.add(false);
+  }
+
+  void editRadios(RadioModel radio) async {
+    _loadController.sink.add(true);
+    await _radiosProvider.editRadio(radio);
     _loadController.sink.add(false);
   }
 
