@@ -1,14 +1,5 @@
-import 'package:brigadapoli/src/bloc/head_phones_bloc.dart';
 import 'package:brigadapoli/src/bloc/kits_bloc.dart';
-import 'package:brigadapoli/src/models/head_phone_model.dart';
 import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/providers/head_phones_provider.dart';
 import 'package:brigadapoli/src/providers/kit_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

@@ -1,9 +1,4 @@
-import 'package:brigadapoli/src/models/head_phone_model.dart';
 import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/providers/head_phones_provider.dart';
 import 'package:brigadapoli/src/providers/kit_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -43,7 +38,7 @@ class KitsBloc {
 
   void deletekits(String id) async {
     _loadController.sink.add(true);
-    await _kitsProvider..deleteKits(id);
+    await _kitsProvider.deleteKits(id);
     _loadController.sink.add(false);
   }
 
