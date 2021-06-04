@@ -1,5 +1,6 @@
+import 'package:brigadapoli/src/bloc/provider.dart';
+import 'package:brigadapoli/src/bloc/radios_bloc.dart';
 import 'package:brigadapoli/src/models/radio_model.dart';
-import 'package:brigadapoli/src/providers/radio_provider.dart';
 import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,14 @@ class AddRadiosPage extends StatefulWidget {
 class _AddRadiosPageState extends State<AddRadiosPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final radioProvider = new RadiosProvider();
 
+  RadiosBloc radiosBloc;
   RadioModel radio = new RadioModel();
 
   @override
   Widget build(BuildContext context) {
+
+    radiosBloc = Provider.radioBloc(context);
 
     final RadioModel radioData = ModalRoute.of(context).settings.arguments;
 
@@ -139,9 +142,9 @@ class _AddRadiosPageState extends State<AddRadiosPage> {
     print(radio.name);
 
     if(radio.idFirebase == null){
-      radioProvider.createRadio(radio);
+      radiosBloc.addRadios(radio);
     }
-    else{radioProvider.editRadio(radio);
+    else{radiosBloc.editRadios(radio);
     }
     viewSnackbar("Registro Guardado");
   }
