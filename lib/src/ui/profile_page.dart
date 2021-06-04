@@ -48,6 +48,31 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ]),
+          Row(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.edit,
+                  color: Colors.black,
+                ),
+                onPressed: () {},
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 220.0),
+                  child: Switch(
+                    value: true,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    activeTrackColor: Colors.lightGreenAccent,
+                    activeColor: Colors.green,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
