@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class ProfilePage extends StatefulWidget{
 
+class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -12,7 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Center(
       child: Column(
         children: <Widget>[
-
+          topBar(),
           Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
             Row(
               children: [
@@ -77,4 +77,58 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+}
+
+Container topBar() {
+  return Container(
+    child: CustomPaint(
+      child: Container(
+        height: 210.0,
+        margin: EdgeInsets.only(top: 5.0, left: 10.0, right: 20.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[],
+              ),
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: 90,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/img/profile_photo.png'),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Emmanuel Montes',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Movil: 12',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    ),
+  );
 }
