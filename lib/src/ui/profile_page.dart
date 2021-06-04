@@ -1,7 +1,7 @@
-import 'package:brigadapoli/src/widgets/curve_painter.dart';
+import 'package:brigadapoli/src/ui/widgets/curve_painter.dart';
 import 'package:flutter/material.dart';
-class ProfilePage extends StatefulWidget{
 
+class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -20,8 +20,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white60)),
-                      child: Text("Elija Un Botiquín",style: TextStyle(color: Colors.black26),),
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white60)),
+                      child: Text(
+                        "Elija Un Botiquín",
+                        style: TextStyle(color: Colors.black26),
+                      ),
                       onPressed: () {}),
                 ),
               ],
@@ -31,8 +36,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white60)),
-                      child: Text("Elija Un Botiquín",style: TextStyle(color: Colors.black26),),
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white60)),
+                      child: Text(
+                        "Elija Un Botiquín",
+                        style: TextStyle(color: Colors.black26),
+                      ),
                       onPressed: () {}),
                 ),
               ],
@@ -42,8 +52,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white60)),
-                      child: Text("Elija Un Botiquín",style: TextStyle(color: Colors.black26),),
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white60)),
+                      child: Text(
+                        "Elija Un Botiquín",
+                        style: TextStyle(color: Colors.black26),
+                      ),
                       onPressed: () {}),
                 ),
               ],
@@ -79,7 +94,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
-
 
 Container topBar() {
   return Container(
