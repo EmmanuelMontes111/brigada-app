@@ -31,6 +31,9 @@ dependencies:
   rxdart: ^0.26.0
   convex_bottom_bar: ^3.0.0
   http:
+  image_picker:
+  mime_type:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

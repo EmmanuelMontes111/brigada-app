@@ -1,5 +1,5 @@
+import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/models/head_phone_model.dart';
-import 'package:brigadapoli/src/providers/head_phones_provider.dart';
 import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
@@ -11,12 +11,14 @@ class AddHeadPhonesPage extends StatefulWidget {
 class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final headPhoneProvider = new HeadPhonesProvider();
 
+  HeadPhonesBloc headPhonesBloc;
   HeadPhoneModel headPhone = new HeadPhoneModel();
 
   @override
   Widget build(BuildContext context) {
+
+    headPhonesBloc = Provider.headPhoneBloc(context);
 
     final HeadPhoneModel headPhoneData = ModalRoute.of(context).settings.arguments;
 
@@ -139,9 +141,9 @@ class _AddHeadPhonesPageState extends State<AddHeadPhonesPage> {
     print(headPhone.name);
 
     if(headPhone.idFirebase == null){
-      headPhoneProvider.createHeadPhone(headPhone);
+      headPhonesBloc.addHeadPhone(headPhone);
     }
-    else{headPhoneProvider.editHeadPhone(headPhone);
+    else{headPhonesBloc.editHeadPhone(headPhone);
     }
     viewSnackbar("Registro Guardado");
   }

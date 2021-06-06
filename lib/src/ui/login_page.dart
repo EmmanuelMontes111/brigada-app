@@ -1,6 +1,7 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
+import 'package:brigadapoli/src/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -150,9 +151,16 @@ class LoginPage extends StatelessWidget {
         });
   }
 
-  _goToTapViewPage(LoginBloc bloc, BuildContext context) {
+  _goToTapViewPage(LoginBloc bloc, BuildContext context) async {
 
-    userProvider.login(bloc.email, bloc.password);
+   Map info =  await userProvider.login(bloc.email, bloc.password);
+
+   if (info['ok']) {
+     Navigator.pushReplacementNamed(context, 'viewPages');
+   }
+   else{
+     viewAlert(context,"Porfavor vuelve a intentarlo");
+   }
     
    // Navigator.pushReplacementNamed(context, 'viewPages');
   }

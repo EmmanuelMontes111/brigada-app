@@ -43,6 +43,8 @@ class KitsProvider {
     final List<KitModel> kitsList =  new List();
     if (decodeData == null) return [];
 
+    if (decodeData['error'] != null) return [];
+
     decodeData.forEach((idFirebase, kitJson) {
       print(kitJson);
       final kitTemp = KitModel.fromJson(kitJson);

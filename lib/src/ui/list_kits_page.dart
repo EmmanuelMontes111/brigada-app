@@ -1,42 +1,46 @@
+import 'package:brigadapoli/src/bloc/kits_bloc.dart';
+import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/providers/kit_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class ListKitsPage extends StatelessWidget{
-  final kitsProvider = new KitsProvider();
+
   bool isDelete = false;
   @override
   Widget build(BuildContext context) {
+    final kitsBloc = Provider.kitsBloc(context);
+    kitsBloc.loadKits();
 
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
-        child: Container(child:
-        _createList(),
+        child: Container(
+          child: _createList(kitsBloc),
         ),
       ),
     );
   }
 
-  Widget _createList() {
-    return FutureBuilder(
-        future: kitsProvider.loadkits(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<KitModel>> snapshot) {
+  Widget _createList(KitsBloc kitsBloc) {
+    return StreamBuilder(
+        stream: kitsBloc.kitsStream,
+        builder: (BuildContext context, AsyncSnapshot<List<KitModel>> snapshot) {
           if (snapshot.hasData) {
             final kits = snapshot.data;
             return ListView.builder(
                 itemCount: kits.length,
-                itemBuilder: (context, i) => _crearItem(context, kits[i]));
+                itemBuilder: (context, i) => _crearItem(context, kitsBloc, kits[i]));
           } else {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-        });
+        },
+    );
   }
 
-  Widget _crearItem(BuildContext context, KitModel kit) {
+  Widget _crearItem(BuildContext context, KitsBloc kitsBloc, KitModel kit) {
     return Dismissible(
       key: UniqueKey(),
       background: Container(
@@ -66,15 +70,15 @@ class ListKitsPage extends StatelessWidget{
                     child: Text("Aceptar"),
                     onPressed: () {
                       isDelete = true;
-                      kitsProvider.deleteKits(kit.idFirebase);
+                      kitsBloc.deletekits(kit.idFirebase);
                       Navigator.pop(context);
                     },
                   ),
                 ],
               );
             });
-
       },
+
       child: ListTile(
         title: Text('${kit.name}'),
         subtitle: Text('${kit.id}'),

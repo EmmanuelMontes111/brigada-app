@@ -43,6 +43,8 @@ class HeadPhonesProvider {
     final List<HeadPhoneModel> headPhonesList =  new List();
     if (decodeData == null) return [];
 
+    if (decodeData['error'] != null) return [];
+
     decodeData.forEach((idFirebase, headPhoneJson) {
       print(headPhoneJson);
       final headPhoneTemp = HeadPhoneModel.fromJson(headPhoneJson);

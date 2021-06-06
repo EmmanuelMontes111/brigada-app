@@ -1,11 +1,11 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
+import 'package:brigadapoli/src/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
-
   final userProvider = new UserProvider();
 
   @override
@@ -13,11 +13,11 @@ class RegisterPage extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: Stack(
-          children: <Widget>[
-            _createBackground(context, screenSize),
-            _registerForm(context, screenSize),
-          ],
-        ));
+      children: <Widget>[
+        _createBackground(context, screenSize),
+        _registerForm(context, screenSize),
+      ],
+    ));
   }
 
   Widget _registerForm(BuildContext context, final screenSize) {
@@ -28,8 +28,8 @@ class RegisterPage extends StatelessWidget {
         children: <Widget>[
           SafeArea(
               child: Container(
-                height: 180.0,
-              )),
+            height: 180.0,
+          )),
           Container(
             width: screenSize.width * 0.85,
             margin: EdgeInsets.symmetric(vertical: 40.0),
@@ -58,7 +58,9 @@ class RegisterPage extends StatelessWidget {
                 _createPassword(bloc),
                 SizedBox(height: 30.0),
                 _createBotonRegister(bloc),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
               ],
             ),
           ),
@@ -138,8 +140,8 @@ class RegisterPage extends StatelessWidget {
             style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                  )),
+                borderRadius: BorderRadius.circular(5.0),
+              )),
               backgroundColor: snapshot.hasData
                   ? MaterialStateProperty.all(Color.fromRGBO(4, 75, 172, 1.0))
                   : MaterialStateProperty.all(Colors.black12),
@@ -150,9 +152,14 @@ class RegisterPage extends StatelessWidget {
         });
   }
 
-  _register(LoginBloc bloc, BuildContext context) {
-    userProvider.newUser(bloc.email, bloc.password);
-    // Navigator.pushReplacementNamed(context, 'home');
+  _register(LoginBloc bloc, BuildContext context) async {
+    final info = await userProvider.newUser(bloc.email, bloc.password);
+
+    if (info['ok']) {
+      Navigator.pushReplacementNamed(context, 'viewPages');
+    } else {
+      viewAlert(context, "Email existente");
+    }
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
