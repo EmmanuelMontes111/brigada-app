@@ -43,6 +43,8 @@ class RadiosProvider {
     final List<RadioModel> radiosList =  new List();
     if (decodeData == null) return [];
 
+    if (decodeData['error'] != null) return [];
+
     decodeData.forEach((idFirebase, radioJson) {
       print(radioJson);
       final radioTemp = RadioModel.fromJson(radioJson);

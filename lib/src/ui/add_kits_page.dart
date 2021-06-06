@@ -1,5 +1,6 @@
+import 'package:brigadapoli/src/bloc/kits_bloc.dart';
+import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/models/kit_model.dart';
-import 'package:brigadapoli/src/providers/kit_provider.dart';
 import 'package:brigadapoli/src/utils/utils.dart' as utils;
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,14 @@ class AddKitsPage extends StatefulWidget {
 class _AddKitsPageState extends State<AddKitsPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final kitProvider = new KitsProvider();
 
+  KitsBloc kitsBloc;
   KitModel kit = new KitModel();
 
   @override
   Widget build(BuildContext context) {
+
+    kitsBloc = Provider.kitsBloc(context);
 
     final KitModel kitData = ModalRoute.of(context).settings.arguments;
 
@@ -139,9 +142,9 @@ class _AddKitsPageState extends State<AddKitsPage> {
     print(kit.name);
 
     if(kit.idFirebase == null){
-      kitProvider.createKit(kit);
+      kitsBloc.addkits(kit);
     }
-    else{kitProvider.editKit(kit);
+    else{kitsBloc.editkits(kit);
     }
     viewSnackbar("Registro Guardado");
   }

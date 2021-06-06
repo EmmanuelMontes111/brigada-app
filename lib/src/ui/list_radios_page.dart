@@ -1,33 +1,36 @@
+import 'package:brigadapoli/src/bloc/provider.dart';
+import 'package:brigadapoli/src/bloc/radios_bloc.dart';
 import 'package:brigadapoli/src/models/radio_model.dart';
-import 'package:brigadapoli/src/providers/radio_provider.dart';
 import 'package:flutter/material.dart';
+
 // ignore: must_be_immutable
-class ListRadiosPage extends StatelessWidget{
-  final radiosProvider = new RadiosProvider();
+class ListRadiosPage extends StatelessWidget {
   bool isDelete = false;
+
   @override
   Widget build(BuildContext context) {
+    final radiosBloc = Provider.radioBloc(context);
+    radiosBloc.loadRadios();
 
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20.0),
-        child: Container(child:
-        _createList(),
+        child: Container(
+          child: _createList(radiosBloc),
         ),
       ),
     );
   }
 
-  Widget _createList() {
-    return FutureBuilder(
-        future: radiosProvider.loadRadios(),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<RadioModel>> snapshot) {
+  Widget _createList(RadiosBloc radiosBloc) {
+    return StreamBuilder(
+        stream: radiosBloc.radiosStream,
+        builder: (BuildContext context, AsyncSnapshot<List<RadioModel>> snapshot) {
           if (snapshot.hasData) {
             final radios = snapshot.data;
             return ListView.builder(
                 itemCount: radios.length,
-                itemBuilder: (context, i) => _crearItem(context, radios[i]));
+                itemBuilder: (context, i) => _crearItem(context,radiosBloc, radios[i]));
           } else {
             return Center(
               child: CircularProgressIndicator(),
@@ -36,7 +39,7 @@ class ListRadiosPage extends StatelessWidget{
         });
   }
 
-  Widget _crearItem(BuildContext context, RadioModel radio) {
+  Widget _crearItem(BuildContext context, RadiosBloc radiosBloc, RadioModel radio) {
     return Dismissible(
       key: UniqueKey(),
       background: Container(
@@ -49,11 +52,9 @@ class ListRadiosPage extends StatelessWidget{
               return AlertDialog(
                 title: Text(
                   'ELIMINAR',
-                  style:
-                  TextStyle(color: Colors.red, fontSize: 20.0),
+                  style: TextStyle(color: Colors.red, fontSize: 20.0),
                 ),
-                content: Text(
-                    '¿Esta segur@ de ELIMINAR el ${radio.name}'),
+                content: Text('¿Esta segur@ de ELIMINAR el ${radio.name}'),
                 actions: [
                   TextButton(
                     child: Text("Cancelar"),
@@ -66,19 +67,19 @@ class ListRadiosPage extends StatelessWidget{
                     child: Text("Aceptar"),
                     onPressed: () {
                       isDelete = true;
-                      radiosProvider.deleteRadios(radio.idFirebase);
+                      radiosBloc.deleteRadio(radio.idFirebase);
                       Navigator.pop(context);
                     },
                   ),
                 ],
               );
             });
-
       },
       child: ListTile(
         title: Text('${radio.name}'),
         subtitle: Text('${radio.id}'),
-        onTap: () => Navigator.pushNamed(context, 'addRadios', arguments: radio),
+        onTap: () =>
+            Navigator.pushNamed(context, 'addRadios', arguments: radio),
       ),
     );
   }
