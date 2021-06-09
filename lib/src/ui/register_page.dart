@@ -1,15 +1,35 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
+import 'package:brigadapoli/src/ui/widgets/dropwnbutton_widget.dart';
 import 'package:brigadapoli/src/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final userProvider = new UserProvider();
+
+  int selectedIndexRH = -1;
+
+  List<String> listRH = [
+    'O-',
+    'O+',
+    'A-',
+    'A+',
+    'B-',
+    'B+',
+    'AB-',
+    'AB+',
+  ];
 
   @override
   Widget build(BuildContext context) {
+
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: Stack(
@@ -59,6 +79,8 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(height: 10.0),
                 _createId(bloc),
                 SizedBox(height: 10.0),
+                _createRH(bloc),
+                SizedBox(height: 10.0),
                 _createEmail(bloc),
                 SizedBox(height: 10.0),
                 _createPassword(bloc),
@@ -81,7 +103,6 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget _createName(LoginBloc bloc) {
     return StreamBuilder(
@@ -154,6 +175,45 @@ class RegisterPage extends StatelessWidget {
               ),
               onChanged: (value) => bloc.changedEmail(value),
             ),
+          );
+        });
+  }
+
+  Widget _createRH(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: DropdownbuttonWidget(
+              hint: "Ingese el RH",
+              title: "RH",
+              items: listRH,
+              selectedIndex: selectedIndexRH,
+              onChanged: (position) {
+                setState(() {
+                  selectedIndexRH = position;
+                });
+              },
+            ),
+
+            // TextField(
+            //   keyboardType: TextInputType.number,
+            //   decoration: InputDecoration(
+            //     icon: Icon(
+            //       Icons.perm_identity,
+            //       color: Colors.indigo,
+            //     ),
+            //     labelText: 'Documento',
+            //     counterText: snapshot.data,
+            //     errorText: snapshot.error,
+            //   ),
+            //   onChanged: (value) => bloc.changedEmail(value),
+            // ),
+            //
+
           );
         });
   }
