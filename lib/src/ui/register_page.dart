@@ -83,6 +83,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 10.0),
                 _createEPS(bloc),
                 SizedBox(height: 10.0),
+                _createAcademiCareer(bloc),
+                SizedBox(height: 10.0),
                 _createEmail(bloc),
                 SizedBox(height: 10.0),
                 _createPassword(bloc),
@@ -217,10 +219,35 @@ class _RegisterPageState extends State<RegisterPage> {
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 icon: Icon(
-                  Icons.perm_identity,
+                  Icons.add_business_sharp,
                   color: Colors.indigo,
                 ),
                 labelText: 'EPS',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => bloc.changedEmail(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createAcademiCareer(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.star,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Carrera',
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
