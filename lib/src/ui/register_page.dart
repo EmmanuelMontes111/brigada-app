@@ -81,6 +81,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 10.0),
                 _createRH(bloc),
                 SizedBox(height: 10.0),
+                _createEPS(bloc),
+                SizedBox(height: 10.0),
                 _createEmail(bloc),
                 SizedBox(height: 10.0),
                 _createPassword(bloc),
@@ -198,22 +200,32 @@ class _RegisterPageState extends State<RegisterPage> {
                 });
               },
             ),
+          );
+        });
+  }
 
-            // TextField(
-            //   keyboardType: TextInputType.number,
-            //   decoration: InputDecoration(
-            //     icon: Icon(
-            //       Icons.perm_identity,
-            //       color: Colors.indigo,
-            //     ),
-            //     labelText: 'Documento',
-            //     counterText: snapshot.data,
-            //     errorText: snapshot.error,
-            //   ),
-            //   onChanged: (value) => bloc.changedEmail(value),
-            // ),
-            //
 
+  Widget _createEPS(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.perm_identity,
+                  color: Colors.indigo,
+                ),
+                labelText: 'EPS',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => bloc.changedEmail(value),
+            ),
           );
         });
   }
