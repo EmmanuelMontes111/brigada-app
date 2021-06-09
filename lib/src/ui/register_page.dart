@@ -52,9 +52,11 @@ class RegisterPage extends StatelessWidget {
                   "Crear Cuenta",
                   style: TextStyle(fontSize: 20.0),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
+                _createName(bloc),
+                SizedBox(height: 10.0),
                 _createEmail(bloc),
-                SizedBox(height: 30.0),
+                SizedBox(height: 10.0),
                 _createPassword(bloc),
                 SizedBox(height: 30.0),
                 _createBotonRegister(bloc),
@@ -74,6 +76,32 @@ class RegisterPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+
+  Widget _createName(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.name,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.drive_file_rename_outline,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Nombre',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => bloc.changedEmail(value),
+            ),
+          );
+        });
   }
 
   Widget _createEmail(LoginBloc bloc) {
