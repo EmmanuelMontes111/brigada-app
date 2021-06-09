@@ -57,6 +57,8 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(height: 10.0),
                 _createLastName(bloc),
                 SizedBox(height: 10.0),
+                _createId(bloc),
+                SizedBox(height: 10.0),
                 _createEmail(bloc),
                 SizedBox(height: 10.0),
                 _createPassword(bloc),
@@ -122,6 +124,31 @@ class RegisterPage extends StatelessWidget {
                   color: Colors.indigo,
                 ),
                 labelText: 'Apellidos',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => bloc.changedEmail(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createId(LoginBloc bloc) {
+    return StreamBuilder(
+        stream: bloc.emailStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.perm_identity,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Documento',
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
