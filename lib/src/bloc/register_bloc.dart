@@ -5,32 +5,33 @@ import 'package:rxdart/rxdart.dart';
 
 
 class RegisterBloc with Validators{
-  final _nameCrontroller = BehaviorSubject<String>();
+  final _nameController = BehaviorSubject<String>();
   final _lastNameController = BehaviorSubject<String>();
-  final _emailCrontroller = BehaviorSubject<String>();
-  final _passwordCrontroller = BehaviorSubject<String>();
+  final _emailController = BehaviorSubject<String>();
+  final _passwordController = BehaviorSubject<String>();
 
   // Recuperar los datos del Stream
-  Stream<String> get nameStream => _nameCrontroller.stream.transform(validateName);
+  Stream<String> get nameStream => _nameController.stream.transform(validateName);
   Stream<String> get lastNameStream => _lastNameController.stream.transform(validateLastName);
-  Stream<String> get emailStream => _emailCrontroller.stream.transform(validateEmail);
-  Stream<String> get passwordStream => _passwordCrontroller.stream.transform(validatePassword);
+  Stream<String> get emailStream => _emailController.stream.transform(validateEmail);
+  Stream<String> get passwordStream => _passwordController.stream.transform(validatePassword);
 
   // Insertar valores al Stream
-  Function(String) get changedName => _nameCrontroller.sink.add;
+  Function(String) get changedName => _nameController.sink.add;
   Function(String) get changedLastName => _lastNameController.sink.add;
-  Function(String) get changedEmail => _emailCrontroller.sink.add;
-  Function(String) get changedPassword => _passwordCrontroller.sink.add;
+  Function(String) get changedEmail => _emailController.sink.add;
+  Function(String) get changedPassword => _passwordController.sink.add;
 
   // Obtener el último valor ingresado a los streams
-  String get name => _nameCrontroller.value;
+  String get name => _nameController.value;
   String get lastName => _lastNameController.value;
-  String get email => _emailCrontroller.value;
-  String get password => _passwordCrontroller.value;
+  String get email => _emailController.value;
+  String get password => _passwordController.value;
 
   dispose(){
-    _nameCrontroller?.close();
-    _emailCrontroller?.close();
-    _passwordCrontroller?.close();
+    _nameController?.close();
+    _lastNameController?.close();
+    _emailController?.close();
+    _passwordController?.close();
   }
 }
