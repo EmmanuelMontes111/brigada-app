@@ -1,5 +1,6 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
+import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:brigadapoli/src/ui/widgets/dropwnbutton_widget.dart';
 import 'package:brigadapoli/src/utils/utils.dart';
@@ -42,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _registerForm(BuildContext context, final screenSize) {
     final bloc = Provider.of(context);
-
+    final registerBloc = Provider.registerBloc(context);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -73,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(height: 10.0),
-                _createName(bloc),
+                _createName(registerBloc),
                 SizedBox(height: 10.0),
                 _createLastName(bloc),
                 SizedBox(height: 10.0),
@@ -108,9 +109,9 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _createName(LoginBloc bloc) {
+  Widget _createName(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.nameStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -127,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedName(value),
             ),
           );
         });
