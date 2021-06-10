@@ -50,4 +50,13 @@ class Validators {
       sink.addError('Documento no valido');
     }
   });
+
+  final validateEPS =
+  StreamTransformer<String, String>.fromHandlers(handleData: (eps, sink) {
+    if (eps.isNotEmpty) {
+      sink.add(eps);
+    } else {
+      sink.addError('EPS es requerida');
+    }
+  });
 }

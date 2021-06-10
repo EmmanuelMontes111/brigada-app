@@ -56,6 +56,22 @@ void main() {
     _bloc.changedId(passwordExpected);
   });
 
+  test('validate field EPS when not is empty', () {
+    String epsExpected = "SURA";
+    _bloc.epsStream.listen((eps) {
+      expect(eps, epsExpected);
+    });
+    _bloc.changedEPS(epsExpected);
+  });
+
+  test('validate field EPS when is empty', () {
+    String epsExpected = "";
+    _bloc.epsStream
+        .listen((name) => {})
+        .onError((handleError) => expect(handleError, "EPS es requerida"));
+    _bloc.changedEPS(epsExpected);
+  });
+
   test('validate Email when is valid', () {
     String emailExpected = "emmanuelmontes@gmail.com";
     _bloc.emailStream.listen((email) {
