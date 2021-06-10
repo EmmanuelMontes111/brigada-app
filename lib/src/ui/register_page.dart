@@ -184,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _createRH(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: registerBloc.emailStream,
+        stream: registerBloc.rhStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -198,6 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onChanged: (position) {
                 setState(() {
                   selectedIndexRH = position;
+                  registerBloc.changedRH(selectedIndexRH);
                 });
               },
             ),

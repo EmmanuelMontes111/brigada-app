@@ -76,7 +76,6 @@ class DropdownbuttonWidget extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: Text(
-                      //cuando llamaba simplemente al listkit sin las condiciones del initstate funcionaba, pero no se como colocar los otros
                       selectedIndex < 0
                           ? hint ?? ''
                           : items[selectedIndex],

@@ -7,6 +7,7 @@ class RegisterBloc with Validators {
   final _nameController = BehaviorSubject<String>();
   final _lastNameController = BehaviorSubject<String>();
   final _idController = BehaviorSubject<String>();
+  final _rhController = BehaviorSubject<int>();
   final _epsController = BehaviorSubject<String>();
   final _academicCareerController = BehaviorSubject<String>();
   final _emailController = BehaviorSubject<String>();
@@ -21,6 +22,8 @@ class RegisterBloc with Validators {
 
   Stream<String> get idStream => _idController.stream.transform(validateId);
 
+  Stream<int> get rhStream => _rhController.stream.transform(validateRH);
+
   Stream<String> get epsStream => _epsController.stream.transform(validateEPS);
 
   Stream<String> get academicCareerStream =>
@@ -32,15 +35,16 @@ class RegisterBloc with Validators {
   Stream<String> get passwordStream =>
       _passwordController.stream.transform(validatePassword);
 
-  Stream<bool> get formValidStream => Rx.combineLatest7(
+  Stream<bool> get formValidStream => Rx.combineLatest8(
       nameStream,
       lastNameStream,
       idStream,
+      rhStream,
       epsStream,
       academicCareerStream,
       emailStream,
       passwordStream,
-      (n, l, id, eps, a, e, p) => true);
+      (n, l, id, eps, r, a, e, p) => true);
 
   // Insertar valores al Stream
   Function(String) get changedName => _nameController.sink.add;
@@ -48,6 +52,8 @@ class RegisterBloc with Validators {
   Function(String) get changedLastName => _lastNameController.sink.add;
 
   Function(String) get changedId => _idController.sink.add;
+
+  Function(int) get changedRH => _rhController.sink.add;
 
   Function(String) get changedEPS => _epsController.sink.add;
 
@@ -65,6 +71,8 @@ class RegisterBloc with Validators {
 
   String get id => _idController.value;
 
+  int get rh => _rhController.value;
+
   String get eps => _epsController.value;
 
   String get academicCareer => _academicCareerController.value;
@@ -77,6 +85,7 @@ class RegisterBloc with Validators {
     _nameController?.close();
     _lastNameController?.close();
     _idController?.close();
+    _rhController?.close();
     _epsController?.close();
     _academicCareerController?.close();
     _emailController?.close();

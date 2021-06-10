@@ -51,6 +51,15 @@ class Validators {
     }
   });
 
+  final validateRH =
+  StreamTransformer<int, int>.fromHandlers(handleData: (rh, sink) {
+    if (rh >= 0) {
+      sink.add(rh);
+    } else {
+      sink.addError('Seleccione su RH');
+    }
+  });
+
   final validateEPS =
   StreamTransformer<String, String>.fromHandlers(handleData: (eps, sink) {
     if (eps.isNotEmpty) {
