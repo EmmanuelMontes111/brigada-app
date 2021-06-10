@@ -22,9 +22,13 @@ class Validators {
       sink.addError('Debe tener más de 6 caracteres');
     }
   });
-}
 
-/*
-Stream<bool> get formValidStream =>
-       Rx.combineLatest2(emailStream, passwStream, (e, p) => true);
- */
+  final validateName =
+      StreamTransformer<String, String>.fromHandlers(handleData: (name, sink) {
+    if (name.isNotEmpty) {
+      sink.add(name);
+    } else {
+      sink.addError('Tu nombre es requerido');
+    }
+  });
+}
