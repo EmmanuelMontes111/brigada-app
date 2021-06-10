@@ -310,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
     //formValidStream
 
     return StreamBuilder(
-        // stream: registerBloc.formValidStream,
+        stream: registerBloc.formValidStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return ElevatedButton(
             child: Container(
