@@ -122,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Icons.drive_file_rename_outline,
                   color: Colors.indigo,
                 ),
-                labelText: 'Nombre',
+                labelText: 'Nombres',
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _createLastName(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: registerBloc.emailStream,
+        stream: registerBloc.lastNameStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => registerBloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedLastName(value),
             ),
           );
         });
@@ -159,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _createId(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: registerBloc.emailStream,
+        stream: registerBloc.idStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => registerBloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedId(value),
             ),
           );
         });
@@ -208,7 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _createEPS(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: registerBloc.emailStream,
+        stream: registerBloc.epsStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -225,7 +225,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => registerBloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEPS(value),
             ),
           );
         });
@@ -233,7 +233,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _createAcademiCareer(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: registerBloc.emailStream,
+        stream: registerBloc.academicCareerStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -250,7 +250,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => registerBloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedAcademicCareer(value),
             ),
           );
         });
