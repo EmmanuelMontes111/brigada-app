@@ -20,7 +20,24 @@ void main() {
     String nameExpected = "emmanuel";
     _bloc.nameStream
         .listen((email) => {})
-        .onError((handleError) => expect(handleError, "Tu nombre es requerido"));
+        .onError((handleError) => expect(handleError, "Tu apellido es requerido"));
+    _bloc.changedName(nameExpected);
+  });
+
+
+  test('validate field lastName when not is empty', () {
+    String nameExpected = "Montes";
+    _bloc.nameStream.listen((name) {
+      expect(name, nameExpected);
+    });
+    _bloc.changedName(nameExpected);
+  });
+
+  test('validate field lastName when is empty', () {
+    String nameExpected = "Montes";
+    _bloc.nameStream
+        .listen((email) => {})
+        .onError((handleError) => expect(handleError, "Tu apellido es requerido"));
     _bloc.changedName(nameExpected);
   });
 
