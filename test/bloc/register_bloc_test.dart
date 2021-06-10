@@ -17,28 +17,43 @@ void main() {
   });
 
   test('validate field name when is empty', () {
-    String nameExpected = "emmanuel";
+    String nameExpected = "";
     _bloc.nameStream
-        .listen((email) => {})
-        .onError((handleError) => expect(handleError, "Tu apellido es requerido"));
+        .listen((name) => {})
+        .onError((handleError) => expect(handleError, "Tu nombre es requerido"));
     _bloc.changedName(nameExpected);
   });
 
 
   test('validate field lastName when not is empty', () {
-    String nameExpected = "Montes";
-    _bloc.nameStream.listen((name) {
-      expect(name, nameExpected);
+    String lastNameExpected = "Montes";
+    _bloc.lastNameStream.listen((lastName) {
+      expect(lastName, lastNameExpected);
     });
-    _bloc.changedName(nameExpected);
+    _bloc.changedLastName(lastNameExpected);
   });
 
   test('validate field lastName when is empty', () {
-    String nameExpected = "Montes";
-    _bloc.nameStream
-        .listen((email) => {})
+    String lastNameExpected = "";
+    _bloc.lastNameStream
+        .listen((lastName) => {})
         .onError((handleError) => expect(handleError, "Tu apellido es requerido"));
-    _bloc.changedName(nameExpected);
+    _bloc.changedLastName(lastNameExpected);
+  });
+
+  test('validate id when it has more than 7 characters', () {
+    String idExpected = "1038665166";
+    _bloc.idStream.listen((id) {
+      expect(id, idExpected);
+    });
+    _bloc.changedId(idExpected);
+  });
+
+  test('validate id when it has less than 6 characters', () {
+    String passwordExpected = "123";
+    _bloc.idStream.listen((id) => {}).onError(
+            (handleError) => expect(handleError, "Documento no valido"));
+    _bloc.changedId(passwordExpected);
   });
 
   test('validate Email when is valid', () {
