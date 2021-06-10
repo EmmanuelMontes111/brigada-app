@@ -31,4 +31,14 @@ class Validators {
       sink.addError('Tu nombre es requerido');
     }
   });
+
+
+  final validateLastName =
+  StreamTransformer<String, String>.fromHandlers(handleData: (lastName, sink) {
+    if (lastName.isNotEmpty) {
+      sink.add(lastName);
+    } else {
+      sink.addError('Tu apellido es requerido');
+    }
+  });
 }
