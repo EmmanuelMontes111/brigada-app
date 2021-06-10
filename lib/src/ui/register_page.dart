@@ -1,4 +1,3 @@
-import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
@@ -42,7 +41,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget _registerForm(BuildContext context, final screenSize) {
-    final bloc = Provider.of(context);
     final registerBloc = Provider.registerBloc(context);
     return SingleChildScrollView(
       child: Column(
@@ -76,21 +74,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 10.0),
                 _createName(registerBloc),
                 SizedBox(height: 10.0),
-                _createLastName(bloc),
+                _createLastName(registerBloc),
                 SizedBox(height: 10.0),
-                _createId(bloc),
+                _createId(registerBloc),
                 SizedBox(height: 10.0),
-                _createRH(bloc),
+                _createRH(registerBloc),
                 SizedBox(height: 10.0),
-                _createEPS(bloc),
+                _createEPS(registerBloc),
                 SizedBox(height: 10.0),
-                _createAcademiCareer(bloc),
+                _createAcademiCareer(registerBloc),
                 SizedBox(height: 10.0),
-                _createEmail(bloc),
+                _createEmail(registerBloc),
                 SizedBox(height: 10.0),
-                _createPassword(bloc),
+                _createPassword(registerBloc),
                 SizedBox(height: 30.0),
-                _createBotonRegister(bloc),
+                _createBotonRegister(registerBloc),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -134,9 +132,9 @@ class _RegisterPageState extends State<RegisterPage> {
         });
   }
 
-  Widget _createLastName(LoginBloc bloc) {
+  Widget _createLastName(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -153,15 +151,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createId(LoginBloc bloc) {
+  Widget _createId(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -178,15 +176,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createRH(LoginBloc bloc) {
+  Widget _createRH(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -208,9 +206,9 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
 
-  Widget _createEPS(LoginBloc bloc) {
+  Widget _createEPS(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -227,15 +225,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createAcademiCareer(LoginBloc bloc) {
+  Widget _createAcademiCareer(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -252,15 +250,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createEmail(LoginBloc bloc) {
+  Widget _createEmail(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -278,15 +276,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createPassword(LoginBloc bloc) {
+  Widget _createPassword(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.passwordStream,
+        stream: registerBloc.passwordStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -302,17 +300,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   labelText: 'Contraseña',
                   counterText: snapshot.data,
                   errorText: snapshot.error),
-              onChanged: (value) => bloc.changedPassword(value),
+              onChanged: (value) => registerBloc.changedPassword(value),
             ),
           );
         });
   }
 
-  Widget _createBotonRegister(LoginBloc bloc) {
+  Widget _createBotonRegister(RegisterBloc registerBloc) {
     //formValidStream
 
     return StreamBuilder(
-        stream: bloc.formValidStream,
+        // stream: registerBloc.formValidStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return ElevatedButton(
             child: Container(
@@ -329,13 +327,13 @@ class _RegisterPageState extends State<RegisterPage> {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
+            onPressed: snapshot.hasData ? () => _register(registerBloc, context) : null,
           );
         });
   }
 
-  _register(LoginBloc bloc, BuildContext context) async {
-    final info = await userProvider.newUser(bloc.email, bloc.password);
+  _register(RegisterBloc registerBloc, BuildContext context) async {
+    final info = await userProvider.newUser(registerBloc.email, registerBloc.password);
 
     if (info['ok']) {
       Navigator.pushReplacementNamed(context, 'viewPages');
