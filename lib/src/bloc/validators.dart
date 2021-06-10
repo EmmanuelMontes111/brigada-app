@@ -41,4 +41,13 @@ class Validators {
       sink.addError('Tu apellido es requerido');
     }
   });
+
+  final validateId =
+  StreamTransformer<String, String>.fromHandlers(handleData: (id, sink) {
+    if (id.length > 7) {
+      sink.add(id);
+    } else {
+      sink.addError('Documento no valido');
+    }
+  });
 }
