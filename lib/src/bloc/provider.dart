@@ -1,5 +1,6 @@
 import 'package:brigadapoli/src/bloc/kits_bloc.dart';
 import 'package:brigadapoli/src/bloc/radios_bloc.dart';
+import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'login_bloc.dart';
@@ -10,6 +11,7 @@ export 'package:brigadapoli/src/bloc/head_phones_bloc.dart';
 class Provider extends InheritedWidget {
 
   final loginBloc = new LoginBloc();
+  final _registerBloc = new RegisterBloc();
   final _headPhoneBloc = new HeadPhonesBloc();
   final _kitBloc = new KitsBloc();
   final _radioBloc = new RadiosBloc();
@@ -32,6 +34,10 @@ class Provider extends InheritedWidget {
 
   static LoginBloc of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<Provider>().loginBloc;
+  }
+
+  static RegisterBloc registerBloc (BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<Provider>()._registerBloc;
   }
 
   static HeadPhonesBloc headPhoneBloc (BuildContext context) {
