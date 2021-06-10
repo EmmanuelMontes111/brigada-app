@@ -72,6 +72,22 @@ void main() {
     _bloc.changedEPS(epsExpected);
   });
 
+  test('validate field academicCareer when not is empty', () {
+    String academicCareerExpected = "Ingenieria Informatica";
+    _bloc.academicCareerStream.listen((academicCareer) {
+      expect(academicCareer, academicCareerExpected);
+    });
+    _bloc.changedAcademicCareer(academicCareerExpected);
+  });
+
+  test('validate field academicCareer when is empty', () {
+    String academicCareerExpected = "";
+    _bloc.academicCareerStream
+        .listen((name) => {})
+        .onError((handleError) => expect(handleError, "Tu Carrera es requerida"));
+    _bloc.changedAcademicCareer(academicCareerExpected);
+  });
+
   test('validate Email when is valid', () {
     String emailExpected = "emmanuelmontes@gmail.com";
     _bloc.emailStream.listen((email) {

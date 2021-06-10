@@ -59,4 +59,13 @@ class Validators {
       sink.addError('EPS es requerida');
     }
   });
+
+  final validateAcademicCareer =
+  StreamTransformer<String, String>.fromHandlers(handleData: (academicCareer, sink) {
+    if (academicCareer.isNotEmpty) {
+      sink.add(academicCareer);
+    } else {
+      sink.addError('Tu Carrera es requerida');
+    }
+  });
 }

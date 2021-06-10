@@ -9,6 +9,7 @@ class RegisterBloc with Validators{
   final _lastNameController = BehaviorSubject<String>();
   final _idController = BehaviorSubject<String>();
   final _epsController = BehaviorSubject<String>();
+  final _academicCareerController = BehaviorSubject<String>();
   final _emailController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
 
@@ -17,6 +18,7 @@ class RegisterBloc with Validators{
   Stream<String> get lastNameStream => _lastNameController.stream.transform(validateLastName);
   Stream<String> get idStream => _idController.stream.transform(validateId);
   Stream<String> get epsStream => _epsController.stream.transform(validateEPS);
+  Stream<String> get academicCareerStream => _academicCareerController.stream.transform(validateAcademicCareer);
   Stream<String> get emailStream => _emailController.stream.transform(validateEmail);
   Stream<String> get passwordStream => _passwordController.stream.transform(validatePassword);
 
@@ -25,6 +27,7 @@ class RegisterBloc with Validators{
   Function(String) get changedLastName => _lastNameController.sink.add;
   Function(String) get changedId => _idController.sink.add;
   Function(String) get changedEPS => _epsController.sink.add;
+  Function(String) get changedAcademicCareer => _academicCareerController.sink.add;
   Function(String) get changedEmail => _emailController.sink.add;
   Function(String) get changedPassword => _passwordController.sink.add;
 
@@ -33,6 +36,7 @@ class RegisterBloc with Validators{
   String get lastName => _lastNameController.value;
   String get id => _idController.value;
   String get eps => _epsController.value;
+  String get academicCareer => _academicCareerController.value;
   String get email => _emailController.value;
   String get password => _passwordController.value;
 
@@ -41,6 +45,7 @@ class RegisterBloc with Validators{
     _lastNameController?.close();
     _idController?.close();
     _epsController?.close();
+    _academicCareerController?.close();
     _emailController?.close();
     _passwordController?.close();
   }
