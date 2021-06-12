@@ -2,6 +2,7 @@ import 'package:brigadapoli/src/ui/home_page.dart';
 import 'package:brigadapoli/src/ui/implements_page.dart';
 import 'package:brigadapoli/src/ui/profile_page.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class TapViewPage extends StatefulWidget {
@@ -11,9 +12,15 @@ class TapViewPage extends StatefulWidget {
 }
 
 class _TapViewPageState extends State<TapViewPage> {
-
+  bool initialized = false;
   int selectedIndex = 1;
   List<Widget> listWidgets = [ImplementsPage(),HomePage(),ProfilePage()];
+
+  @override
+  void initState() {
+    super.initState();
+    initializerFlutterFire();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +74,20 @@ class _TapViewPageState extends State<TapViewPage> {
         );
       }
       break;
+    }
+  }
+
+  initializerFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        initialized = true;
+      });
     }
   }
 }
