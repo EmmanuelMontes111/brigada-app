@@ -25,7 +25,7 @@ class RegisterUserFirebase {
         'name': registerBloc.name,
         'lastName': registerBloc.lastName,
         'typeUser': 'BRIGADISTA',
-        'Id': registerBloc.id,
+        'id': registerBloc.id,
         'movil': 000,
         'rh': listRH[registerBloc.rh],
         'positionRHlist': registerBloc.rh,

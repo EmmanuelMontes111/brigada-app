@@ -1,6 +1,5 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
-import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:brigadapoli/src/services_firebaase/login_user_firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';

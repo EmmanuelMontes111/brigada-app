@@ -1,4 +1,5 @@
 import 'package:brigadapoli/src/services_firebaase/global_firebase.dart';
+import 'package:brigadapoli/src/services_firebaase/update_data_firebase.dart';
 import 'package:brigadapoli/src/ui/widgets/curve_painter.dart';
 import 'package:flutter/material.dart';
 
@@ -81,9 +82,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Container(
                     padding: const EdgeInsets.only(left: 220.0),
                     child: Switch(
-                      value: true,
+                      value: Global.brigadista.activationStatus,
                       onChanged: (value) {
-                        setState(() {});
+                        setState(() {
+                          Global.brigadista.activationStatus = value;
+                        });
+                        UpdateDataFirebase().updateData(Global.brigadista);
                       },
                       activeTrackColor: Colors.lightGreenAccent,
                       activeColor: Colors.green,
