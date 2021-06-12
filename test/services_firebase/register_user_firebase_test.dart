@@ -1,10 +1,4 @@
-import 'package:brigadapoli/src/bloc/provider.dart';
-import 'package:brigadapoli/src/bloc/register_bloc.dart';
-import 'package:brigadapoli/src/models/head_phone_model.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
-import 'package:brigadapoli/src/services_firebaase/register_user_firebase.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class MockUserProvider extends Mock implements UserProvider{}

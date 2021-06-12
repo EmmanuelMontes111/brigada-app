@@ -48,33 +48,33 @@ class _TapViewPageState extends State<TapViewPage> {
   }
 
   // ignore: missing_return
-  Widget _appBarSelectIndex(){
-    switch(selectedIndex) {
-      case 0: {
-       return AppBar(
-          title: Text('Implementos'),
-          backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
-        );
-      }
-      break;
-
-      case 1: {
-        return AppBar(
-          title: Text('Brigadistas'),
-          backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
-        );
-      }
-      break;
-
-      case 2: {
-        AppBar(
-          title: Text('Mi Perfil'),
-          backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
-        );
-      }
-      break;
-    }
-  }
+  // Widget _appBarSelectIndex(){
+  //   switch(selectedIndex) {
+  //     case 0: {
+  //      return AppBar(
+  //         title: Text('Implementos'),
+  //         backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+  //       );
+  //     }
+  //     break;
+  //
+  //     case 1: {
+  //       return AppBar(
+  //         title: Text('Brigadistas'),
+  //         backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+  //       );
+  //     }
+  //     break;
+  //
+  //     case 2: {
+  //       AppBar(
+  //         title: Text('Mi Perfil'),
+  //         backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
+  //       );
+  //     }
+  //     break;
+  //   }
+  // }
 
   initializerFlutterFire() async {
     try {

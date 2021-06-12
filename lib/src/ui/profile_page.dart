@@ -1,3 +1,4 @@
+import 'package:brigadapoli/src/services_firebaase/global_firebase.dart';
 import 'package:brigadapoli/src/ui/widgets/curve_painter.dart';
 import 'package:flutter/material.dart';
 
@@ -129,7 +130,7 @@ Container topBar() {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Emmanuel Montes',
+                    '${Global.brigadista.name} ${Global.brigadista.lastName}',
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),

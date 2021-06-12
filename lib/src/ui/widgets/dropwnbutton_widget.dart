@@ -82,9 +82,9 @@ class DropdownbuttonWidget extends StatelessWidget {
                       style: selectedIndex < 0
                           ? Theme.of(context)
                           .textTheme
-                          .subhead
+                          .subtitle1
                           .apply(color: Color.fromRGBO(0, 0, 0, 0.65))
-                          : Theme.of(context).textTheme.subhead,
+                          : Theme.of(context).textTheme.subtitle1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

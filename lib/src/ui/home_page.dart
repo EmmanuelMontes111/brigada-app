@@ -14,11 +14,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
-  UserModel _brigadista;
-
-  HomePageState() {
-    _brigadista = Global.doc;
-  }
+  // UserModel _brigadista;
+  //
+  // HomePageState() {
+  //   _brigadista = Global.doc;
+  // }
 
   final _db = FirebaseFirestore.instance;
   String name;
@@ -33,6 +33,7 @@ class HomePageState extends State<HomePage> {
     _isSearching = false;
     _users = SizedBox();
     readDataBase();
+    // ignore: deprecated_member_use
     listUsers = List<UserModel>();
 
   }
