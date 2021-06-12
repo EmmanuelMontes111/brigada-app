@@ -2,6 +2,7 @@ import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:brigadapoli/src/services_firebaase/login_user_firebase.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final userProvider = new UserProvider();
+  bool initialized = false;
+  @override
+  void initState() {
+    super.initState();
+    initializerFlutterFire();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -217,4 +223,19 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
+
+  initializerFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        initialized = true;
+      });
+    }
+  }
+
 }

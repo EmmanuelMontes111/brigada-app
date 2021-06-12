@@ -137,7 +137,7 @@ Container topBar() {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Movil: 12',
+                    '${Global.brigadista.movil}',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
