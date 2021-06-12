@@ -1,12 +1,13 @@
 import 'package:brigadapoli/src/bloc/provider.dart';
 import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
+import 'package:brigadapoli/src/services_firebaase/register_user_firebase.dart';
 import 'package:brigadapoli/src/ui/widgets/dropwnbutton_widget.dart';
 import 'package:brigadapoli/src/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget{
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -328,20 +329,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _register(registerBloc, context) : null,
+            onPressed: snapshot.hasData ? () => RegisterUserFirebase().register(registerBloc, context) : null,
           );
         });
   }
 
-  _register(RegisterBloc registerBloc, BuildContext context) async {
-    final info = await userProvider.newUser(registerBloc.email, registerBloc.password);
-
-    if (info['ok']) {
-      Navigator.pushReplacementNamed(context, 'viewPages');
-    } else {
-      viewAlert(context, "Email existente");
-    }
-  }
+  // _register(RegisterBloc registerBloc, BuildContext context) async {
+  //   final info = await userProvider.newUser(registerBloc.email, registerBloc.password);
+  //
+  //   if (info['ok']) {
+  //     Navigator.pushReplacementNamed(context, 'viewPages');
+  //   } else {
+  //     viewAlert(context, "Email existente");
+  //   }
+  // }
 
   Widget _createBackground(BuildContext context, final screenSize) {
     final blueBackground = Container(
