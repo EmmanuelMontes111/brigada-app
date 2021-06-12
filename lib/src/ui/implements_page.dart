@@ -52,6 +52,8 @@ class _ImplementsPageState extends State<ImplementsPage> {
       floatingActionButton: _floatingActionButtonTapBodies(),
       body: bodies[theriGroupValue],
       appBar: AppBar(
+            title: Text('Implementos'),
+            backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
         bottom: PreferredSize(
           preferredSize: Size(double.infinity, 45.0),
           child: Padding(

@@ -91,7 +91,7 @@ class HomePageState extends State<HomePage> {
                 });
               })
         ],
-        backgroundColor: Colors.indigo,
+        backgroundColor: Color.fromRGBO(4, 75, 172, 1.0),
       ),
       body: ListView(
         children: <Widget>[

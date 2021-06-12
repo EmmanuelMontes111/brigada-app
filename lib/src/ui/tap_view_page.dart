@@ -26,7 +26,6 @@ class _TapViewPageState extends State<TapViewPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: _appBarSelectIndex(),
       body: listWidgets[selectedIndex],
       bottomNavigationBar: ConvexAppBar.badge({2: '21+'},
         items: [
