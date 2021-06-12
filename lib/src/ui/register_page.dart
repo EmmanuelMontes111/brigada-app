@@ -3,18 +3,18 @@ import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
 import 'package:brigadapoli/src/services_firebaase/register_user_firebase.dart';
 import 'package:brigadapoli/src/ui/widgets/dropwnbutton_widget.dart';
-import 'package:brigadapoli/src/utils/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget{
+class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
   final userProvider = new UserProvider();
-
+  bool initialized = false;
   int selectedIndexRH = -1;
 
   List<String> listRH = [
@@ -29,8 +29,13 @@ class _RegisterPageState extends State<RegisterPage> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    initializerFlutterFire();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         body: Stack(
@@ -106,6 +111,20 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       ),
     );
+  }
+
+  initializerFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        initialized = true;
+      });
+    }
   }
 
   Widget _createName(RegisterBloc registerBloc) {
@@ -206,7 +225,6 @@ class _RegisterPageState extends State<RegisterPage> {
           );
         });
   }
-
 
   Widget _createEPS(RegisterBloc registerBloc) {
     return StreamBuilder(
@@ -329,7 +347,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => RegisterUserFirebase().register(registerBloc, context) : null,
+            onPressed: snapshot.hasData
+                ? () => RegisterUserFirebase()
+                    .register(registerBloc, context, listRH)
+                : null,
           );
         });
   }
