@@ -1,13 +1,23 @@
 import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
-import 'package:brigadapoli/src/providers/user_provider.dart';
-import 'package:brigadapoli/src/utils/utils.dart';
+import 'package:brigadapoli/src/services_firebaase/login_user_firebase.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
 
-  final userProvider = new UserProvider();
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool initialized = false;
+  @override
+  void initState() {
+    super.initState();
+    initializerFlutterFire();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,23 +156,9 @@ class LoginPage extends StatelessWidget {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _goToTapViewPage(bloc, context) : null,
+            onPressed: snapshot.hasData ? () => LoginUserFirebase().goToTapViewPage(bloc, context) : null,
           );
         });
-  }
-
-  _goToTapViewPage(LoginBloc bloc, BuildContext context) async {
-
-   Map info =  await userProvider.login(bloc.email, bloc.password);
-
-   if (info['ok']) {
-     Navigator.pushReplacementNamed(context, 'viewPages');
-   }
-   else{
-     viewAlert(context,"Porfavor vuelve a intentarlo");
-   }
-    
-   // Navigator.pushReplacementNamed(context, 'viewPages');
   }
 
   Widget _createBackground(BuildContext context, final screenSize) {
@@ -226,4 +222,19 @@ class LoginPage extends StatelessWidget {
       ],
     );
   }
+
+  initializerFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        initialized = true;
+      });
+    }
+  }
+
 }
