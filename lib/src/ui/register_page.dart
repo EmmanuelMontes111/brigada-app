@@ -1,12 +1,38 @@
-import 'package:brigadapoli/src/bloc/login_bloc.dart';
 import 'package:brigadapoli/src/bloc/provider.dart';
+import 'package:brigadapoli/src/bloc/register_bloc.dart';
 import 'package:brigadapoli/src/providers/user_provider.dart';
-import 'package:brigadapoli/src/utils/utils.dart';
+import 'package:brigadapoli/src/services_firebaase/register_user_firebase.dart';
+import 'package:brigadapoli/src/ui/widgets/dropwnbutton_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final userProvider = new UserProvider();
+  bool initialized = false;
+  int selectedIndexRH = -1;
+
+  List<String> listRH = [
+    'O-',
+    'O+',
+    'A-',
+    'A+',
+    'B-',
+    'B+',
+    'AB-',
+    'AB+',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    initializerFlutterFire();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +47,7 @@ class RegisterPage extends StatelessWidget {
   }
 
   Widget _registerForm(BuildContext context, final screenSize) {
-    final bloc = Provider.of(context);
-
+    final registerBloc = Provider.registerBloc(context);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -52,12 +77,24 @@ class RegisterPage extends StatelessWidget {
                   "Crear Cuenta",
                   style: TextStyle(fontSize: 20.0),
                 ),
-                SizedBox(height: 20.0),
-                _createEmail(bloc),
+                SizedBox(height: 10.0),
+                _createName(registerBloc),
+                SizedBox(height: 10.0),
+                _createLastName(registerBloc),
+                SizedBox(height: 10.0),
+                _createId(registerBloc),
+                SizedBox(height: 10.0),
+                _createRH(registerBloc),
+                SizedBox(height: 10.0),
+                _createEPS(registerBloc),
+                SizedBox(height: 10.0),
+                _createAcademiCareer(registerBloc),
+                SizedBox(height: 10.0),
+                _createEmail(registerBloc),
+                SizedBox(height: 10.0),
+                _createPassword(registerBloc),
                 SizedBox(height: 30.0),
-                _createPassword(bloc),
-                SizedBox(height: 30.0),
-                _createBotonRegister(bloc),
+                _createBotonRegister(registerBloc),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -76,9 +113,172 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _createEmail(LoginBloc bloc) {
+  initializerFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        initialized = true;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        initialized = true;
+      });
+    }
+  }
+
+  Widget _createName(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.emailStream,
+        stream: registerBloc.nameStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.name,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.drive_file_rename_outline,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Nombres',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => registerBloc.changedName(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createLastName(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.lastNameStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.name,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.drive_file_rename_outline,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Apellidos',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => registerBloc.changedLastName(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createId(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.idStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.perm_identity,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Documento',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => registerBloc.changedId(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createRH(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.rhStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: DropdownbuttonWidget(
+              hint: "Ingese el RH",
+              title: "RH",
+              items: listRH,
+              selectedIndex: selectedIndexRH,
+              onChanged: (position) {
+                setState(() {
+                  selectedIndexRH = position;
+                  registerBloc.changedRH(selectedIndexRH);
+                });
+              },
+            ),
+          );
+        });
+  }
+
+  Widget _createEPS(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.epsStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.add_business_sharp,
+                  color: Colors.indigo,
+                ),
+                labelText: 'EPS',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => registerBloc.changedEPS(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createAcademiCareer(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.academicCareerStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                icon: Icon(
+                  Icons.star,
+                  color: Colors.indigo,
+                ),
+                labelText: 'Carrera',
+                counterText: snapshot.data,
+                errorText: snapshot.error,
+              ),
+              onChanged: (value) => registerBloc.changedAcademicCareer(value),
+            ),
+          );
+        });
+  }
+
+  Widget _createEmail(RegisterBloc registerBloc) {
+    return StreamBuilder(
+        stream: registerBloc.emailStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -96,15 +296,15 @@ class RegisterPage extends StatelessWidget {
                 counterText: snapshot.data,
                 errorText: snapshot.error,
               ),
-              onChanged: (value) => bloc.changedEmail(value),
+              onChanged: (value) => registerBloc.changedEmail(value),
             ),
           );
         });
   }
 
-  Widget _createPassword(LoginBloc bloc) {
+  Widget _createPassword(RegisterBloc registerBloc) {
     return StreamBuilder(
-        stream: bloc.passwordStream,
+        stream: registerBloc.passwordStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return Container(
             padding: EdgeInsets.symmetric(
@@ -120,17 +320,17 @@ class RegisterPage extends StatelessWidget {
                   labelText: 'Contraseña',
                   counterText: snapshot.data,
                   errorText: snapshot.error),
-              onChanged: (value) => bloc.changedPassword(value),
+              onChanged: (value) => registerBloc.changedPassword(value),
             ),
           );
         });
   }
 
-  Widget _createBotonRegister(LoginBloc bloc) {
+  Widget _createBotonRegister(RegisterBloc registerBloc) {
     //formValidStream
 
     return StreamBuilder(
-        stream: bloc.formValidStream,
+        stream: registerBloc.formValidStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return ElevatedButton(
             child: Container(
@@ -147,20 +347,23 @@ class RegisterPage extends StatelessWidget {
                   : MaterialStateProperty.all(Colors.black12),
               elevation: MaterialStateProperty.all(0.0),
             ),
-            onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
+            onPressed: snapshot.hasData
+                ? () => RegisterUserFirebase()
+                    .register(registerBloc, context, listRH)
+                : null,
           );
         });
   }
 
-  _register(LoginBloc bloc, BuildContext context) async {
-    final info = await userProvider.newUser(bloc.email, bloc.password);
-
-    if (info['ok']) {
-      Navigator.pushReplacementNamed(context, 'viewPages');
-    } else {
-      viewAlert(context, "Email existente");
-    }
-  }
+  // _register(RegisterBloc registerBloc, BuildContext context) async {
+  //   final info = await userProvider.newUser(registerBloc.email, registerBloc.password);
+  //
+  //   if (info['ok']) {
+  //     Navigator.pushReplacementNamed(context, 'viewPages');
+  //   } else {
+  //     viewAlert(context, "Email existente");
+  //   }
+  // }
 
   Widget _createBackground(BuildContext context, final screenSize) {
     final blueBackground = Container(

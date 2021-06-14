@@ -22,9 +22,59 @@ class Validators {
       sink.addError('Debe tener más de 6 caracteres');
     }
   });
-}
 
-/*
-Stream<bool> get formValidStream =>
-       Rx.combineLatest2(emailStream, passwStream, (e, p) => true);
- */
+  final validateName =
+      StreamTransformer<String, String>.fromHandlers(handleData: (name, sink) {
+    if (name.isNotEmpty) {
+      sink.add(name);
+    } else {
+      sink.addError('Tu nombre es requerido');
+    }
+  });
+
+
+  final validateLastName =
+  StreamTransformer<String, String>.fromHandlers(handleData: (lastName, sink) {
+    if (lastName.isNotEmpty) {
+      sink.add(lastName);
+    } else {
+      sink.addError('Tu apellido es requerido');
+    }
+  });
+
+  final validateId =
+  StreamTransformer<String, String>.fromHandlers(handleData: (id, sink) {
+    if (id.length > 7) {
+      sink.add(id);
+    } else {
+      sink.addError('Documento no valido');
+    }
+  });
+
+  final validateRH =
+  StreamTransformer<int, int>.fromHandlers(handleData: (rh, sink) {
+    if (rh >= 0) {
+      sink.add(rh);
+    } else {
+      sink.addError('Seleccione su RH');
+    }
+  });
+
+  final validateEPS =
+  StreamTransformer<String, String>.fromHandlers(handleData: (eps, sink) {
+    if (eps.isNotEmpty) {
+      sink.add(eps);
+    } else {
+      sink.addError('EPS es requerida');
+    }
+  });
+
+  final validateAcademicCareer =
+  StreamTransformer<String, String>.fromHandlers(handleData: (academicCareer, sink) {
+    if (academicCareer.isNotEmpty) {
+      sink.add(academicCareer);
+    } else {
+      sink.addError('Tu Carrera es requerida');
+    }
+  });
+}
