@@ -24,6 +24,12 @@ jobs:
         with:
           flutter-version: '2.0.4'
 
+      - name: Channel stable
+        run: flutter channel stable
+
+      - name: Upgrade
+        run: flutter upgrade
+
       # The web version of the application is built.
       - name: Build web project
         run: flutter build web
