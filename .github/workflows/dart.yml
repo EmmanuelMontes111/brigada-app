@@ -55,9 +55,6 @@ jobs:
       - name: Download web artifact
         uses: actions/download-artifact@master
 
-      - name: Channel stable
-        run: flutter channel stable
-
       - name: Upgrade
         run: flutter upgrade
 
