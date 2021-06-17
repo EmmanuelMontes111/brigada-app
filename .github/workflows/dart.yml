@@ -55,9 +55,6 @@ jobs:
       - name: Download web artifact
         uses: actions/download-artifact@master
 
-      - name: Upgrade
-        run: flutter upgrade
-
       # The web version of the application is built.
       - name: Build web project
         run: flutter build web
