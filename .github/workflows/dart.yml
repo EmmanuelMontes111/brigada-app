@@ -24,12 +24,6 @@ jobs:
         with:
           flutter-version: '2.0.4'
 
-      - name: Channel stable
-        run: flutter channel stable
-
-      - name: Upgrade
-        run: flutter upgrade
-
       # The web version of the application is built.
       - name: Build web project
         run: flutter build web
@@ -49,7 +43,7 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BRIGADA_POLI }}'
           channelId: live
           projectId: brigada-poli
-          path: "https://brigada-poli.web.app/"
+          path: "https://brigada-poli-default-rtdb.firebaseio.com/"
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
 
