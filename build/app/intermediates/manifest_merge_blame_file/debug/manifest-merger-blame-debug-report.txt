@@ -1,0 +1,224 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.sofka.brigadapoli"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="28" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\debug\AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+15-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
+16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+16-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+16-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+17    <!-- <uses-sdk android:minSdkVersion="14" /> -->
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:5-79
+18-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:13:22-76
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\fde67fc69a2a93962661b728158b8dba\play-services-measurement-api-17.6.0\AndroidManifest.xml:24:5-68
+19-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\fde67fc69a2a93962661b728158b8dba\play-services-measurement-api-17.6.0\AndroidManifest.xml:24:22-65
+20    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+20-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:26:5-110
+20-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:26:22-107
+21
+22    <application
+22-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:3:4-40:19
+23        android:name="androidx.multidex.MultiDexApplication"
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.1.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\894dbaf89df260c143c21607329e1344\core-1.1.0\AndroidManifest.xml:24:18-86
+25        android:debuggable="true"
+26        android:icon="@mipmap/ic_launcher"
+26-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:5:9-43
+27        android:label="brigadapoli" >
+27-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:4:9-36
+28        <activity
+28-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:6:9-34:20
+29            android:name="com.sofka.brigadapoli.MainActivity"
+29-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:7:13-41
+30            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+30-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:10:13-163
+31            android:hardwareAccelerated="true"
+31-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:11:13-47
+32            android:launchMode="singleTop"
+32-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:8:13-43
+33            android:theme="@style/LaunchTheme"
+33-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:9:13-47
+34            android:windowSoftInputMode="adjustResize" >
+34-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:12:13-55
+35
+36            <!--
+37                 Specifies an Android theme to apply to this Activity as soon as
+38                 the Android process has started. This theme is visible to the user
+39                 while the Flutter UI initializes. After that, this theme continues
+40                 to determine the Window background behind the Flutter UI.
+41            -->
+42            <meta-data
+42-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:17:13-20:17
+43                android:name="io.flutter.embedding.android.NormalTheme"
+43-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:18:15-70
+44                android:resource="@style/NormalTheme" />
+44-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:19:15-52
+45            <!--
+46                 Displays an Android View that continues showing the launch screen
+47                 Drawable until Flutter paints its first frame, then this splash
+48                 screen fades out. A splash screen is useful to avoid any visual
+49                 gap between the end of Android's launch screen and the painting of
+50                 Flutter's first frame.
+51            -->
+52            <meta-data
+52-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:26:13-29:17
+53                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+53-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:27:15-79
+54                android:resource="@drawable/launch_background" />
+54-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:28:15-61
+55
+56            <intent-filter>
+56-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:30:13-33:29
+57                <action android:name="android.intent.action.MAIN" />
+57-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:31:17-68
+57-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:31:25-66
+58
+59                <category android:name="android.intent.category.LAUNCHER" />
+59-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:32:17-76
+59-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:32:27-74
+60            </intent-filter>
+61        </activity>
+62        <!--
+63             Don't delete the meta-data below.
+64             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+65        -->
+66        <meta-data
+66-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:37:9-39:33
+67            android:name="flutterEmbedding"
+67-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:38:13-44
+68            android:value="2" />
+68-->C:\Users\Emmanuel Montes\Desktop\brigadaapp\android\app\src\main\AndroidManifest.xml:39:13-30
+69
+70        <provider
+70-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+71            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+71-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+72            android:authorities="com.sofka.brigadapoli.flutter.image_provider"
+72-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+73            android:exported="false"
+73-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+74            android:grantUriPermissions="true" >
+74-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+75            <meta-data
+75-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+76                android:name="android.support.FILE_PROVIDER_PATHS"
+76-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+77                android:resource="@xml/flutter_image_picker_file_paths" />
+77-->[:image_picker] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+78        </provider>
+79
+80        <service
+80-->[:cloud_firestore] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+81            android:name="com.google.firebase.components.ComponentDiscoveryService"
+81-->[:cloud_firestore] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+82            android:directBootAware="true"
+82-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:35:13-43
+83            android:exported="false" >
+83-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:19:13-37
+84            <meta-data
+84-->[:cloud_firestore] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+85                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
+85-->[:cloud_firestore] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[:cloud_firestore] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+87            <meta-data
+87-->[:firebase_core] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+88                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+88-->[:firebase_core] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[:firebase_core] C:\Users\Emmanuel Montes\Desktop\brigadaapp\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+90            <meta-data
+90-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:20:13-22:85
+91                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+91-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:21:17-111
+92                android:value="com.google.firebase.components.ComponentRegistrar" />
+92-->[com.google.firebase:firebase-firestore:21.7.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\3c6e74e9abe63f6ead95aa4c5e19ea65\jetified-firebase-firestore-21.7.1\AndroidManifest.xml:22:17-82
+93            <meta-data
+93-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\fde67fc69a2a93962661b728158b8dba\play-services-measurement-api-17.6.0\AndroidManifest.xml:30:13-32:85
+94                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+94-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\fde67fc69a2a93962661b728158b8dba\play-services-measurement-api-17.6.0\AndroidManifest.xml:31:17-139
+95                android:value="com.google.firebase.components.ComponentRegistrar" />
+95-->[com.google.android.gms:play-services-measurement-api:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\fde67fc69a2a93962661b728158b8dba\play-services-measurement-api-17.6.0\AndroidManifest.xml:32:17-82
+96            <meta-data
+96-->[com.google.firebase:firebase-installations:16.3.2] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\43b21ac6aca9d6a6d0c734d33ba4ba98\firebase-installations-16.3.2\AndroidManifest.xml:17:13-19:85
+97                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+97-->[com.google.firebase:firebase-installations:16.3.2] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\43b21ac6aca9d6a6d0c734d33ba4ba98\firebase-installations-16.3.2\AndroidManifest.xml:18:17-127
+98                android:value="com.google.firebase.components.ComponentRegistrar" />
+98-->[com.google.firebase:firebase-installations:16.3.2] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\43b21ac6aca9d6a6d0c734d33ba4ba98\firebase-installations-16.3.2\AndroidManifest.xml:19:17-82
+99        </service>
+100
+101        <activity
+101-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\16035a35809152c95a82eb2afebf77ff\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+102            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+102-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\16035a35809152c95a82eb2afebf77ff\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+103            android:exported="false"
+103-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\16035a35809152c95a82eb2afebf77ff\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+104            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+104-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\16035a35809152c95a82eb2afebf77ff\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+105
+106        <provider
+106-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:26:9-31:39
+107            android:name="com.google.firebase.provider.FirebaseInitProvider"
+107-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:27:13-77
+108            android:authorities="com.sofka.brigadapoli.firebaseinitprovider"
+108-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:28:13-72
+109            android:directBootAware="true"
+109-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:29:13-43
+110            android:exported="false"
+110-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:30:13-37
+111            android:initOrder="100" />
+111-->[com.google.firebase:firebase-common:19.3.1] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ef647afeafa6593e4818ab7b8a6e9158\jetified-firebase-common-19.3.1\AndroidManifest.xml:31:13-36
+112
+113        <receiver
+113-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:29:9-33:20
+114            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+114-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:30:13-85
+115            android:enabled="true"
+115-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:31:13-35
+116            android:exported="false" >
+116-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:32:13-37
+117        </receiver>
+118
+119        <service
+119-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:35:9-38:40
+120            android:name="com.google.android.gms.measurement.AppMeasurementService"
+120-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:36:13-84
+121            android:enabled="true"
+121-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:37:13-35
+122            android:exported="false" />
+122-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:38:13-37
+123        <service
+123-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:39:9-43:72
+124            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+124-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:40:13-87
+125            android:enabled="true"
+125-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:41:13-35
+126            android:exported="false"
+126-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:42:13-37
+127            android:permission="android.permission.BIND_JOB_SERVICE" />
+127-->[com.google.android.gms:play-services-measurement:17.6.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\672851276bdb238876969e2cdb3b7e8d\play-services-measurement-17.6.0\AndroidManifest.xml:43:13-69
+128
+129        <meta-data
+129-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ac4d28d6947c6aabbc47b984bfe1c436\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+130            android:name="com.google.android.gms.version"
+130-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ac4d28d6947c6aabbc47b984bfe1c436\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+131            android:value="@integer/google_play_services_version" />
+131-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Emmanuel Montes\.gradle\caches\transforms-2\files-2.1\ac4d28d6947c6aabbc47b984bfe1c436\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+132    </application>
+133
+134</manifest>
