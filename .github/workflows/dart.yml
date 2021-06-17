@@ -24,6 +24,24 @@ jobs:
         with:
           flutter-version: '2.0.4'
 
+
+      - name: Channel stable
+        run: flutter channel stable
+
+      - name: Upgrade
+        run: flutter upgrade
+
+      # The web version of the application is built.
+      - name: Build web project
+        run: flutter build web
+
+      # The generated files are uploaded in the build / web path as artifacts, to be able to download them later, with the name "web artifacts".
+      - name: Upload web artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: web artifacts
+          path: build/web
+
       # Get flutter dependencies.
       - run: flutter pub get
 
@@ -54,17 +72,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Download web artifact
         uses: actions/download-artifact@master
-
-      # The web version of the application is built.
-      - name: Build web project
-        run: flutter build web
-
-      # The generated files are uploaded in the build / web path as artifacts, to be able to download them later, with the name "web artifacts".
-      - name: Upload web artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: web artifacts
-          path: build/web
 
       # Deploy flow begins
       - name: Deploy to Firebase
