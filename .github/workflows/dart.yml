@@ -34,6 +34,10 @@ jobs:
       - name: Build web project
         run: flutter build web
 
+      - name: create
+        run: flutter create .
+
+
       # The generated files are uploaded in the build / web path as artifacts, to be able to download them later, with the name "web artifacts".
       - name: Upload web artifact
         uses: actions/upload-artifact@master
